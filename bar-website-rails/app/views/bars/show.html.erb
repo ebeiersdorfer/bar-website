@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bar:</strong>
+  <%= @bar.bar_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @bar.name %>
+</p>
+
+<p>
+  <strong>Twitter name:</strong>
+  <%= @bar.twitter_name %>
+</p>
+
+<p>
+  <strong>Small pic url:</strong>
+  <%= @bar.small_pic_url %>
+</p>
+
+<p>
+  <strong>Large pic url:</strong>
+  <%= @bar.large_pic_url %>
+</p>
+
+<p>
+  <strong>Contact number:</strong>
+  <%= @bar.contact_number %>
+</p>
+
+<p>
+  <strong>Hours:</strong>
+  <%= @bar.hours %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @bar.address %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @bar.description %>
+</p>
+
+<p>
+  <strong>X coordinate:</strong>
+  <%= @bar.x_coordinate %>
+</p>
+
+<p>
+  <strong>Y coordinate:</strong>
+  <%= @bar.y_coordinate %>
+</p>
+
+<%= link_to 'Edit', edit_bar_path(@bar) %> |
+<%= link_to 'Back', bars_path %>

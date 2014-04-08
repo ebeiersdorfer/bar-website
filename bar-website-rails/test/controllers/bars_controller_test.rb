@@ -1,0 +1,49 @@
+require 'test_helper'
+
+class BarsControllerTest < ActionController::TestCase
+  setup do
+    @bar = bars(:one)
+  end
+
+  test "should get index" do
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:bars)
+  end
+
+  test "should get new" do
+    get :new
+    assert_response :success
+  end
+
+  test "should create bar" do
+    assert_difference('Bar.count') do
+      post :create, bar: { address: @bar.address, bar_id: @bar.bar_id, contact_number: @bar.contact_number, description: @bar.description, hours: @bar.hours, large_pic_url: @bar.large_pic_url, name: @bar.name, small_pic_url: @bar.small_pic_url, twitter_name: @bar.twitter_name, x_coordinate: @bar.x_coordinate, y_coordinate: @bar.y_coordinate }
+    end
+
+    assert_redirected_to bar_path(assigns(:bar))
+  end
+
+  test "should show bar" do
+    get :show, id: @bar
+    assert_response :success
+  end
+
+  test "should get edit" do
+    get :edit, id: @bar
+    assert_response :success
+  end
+
+  test "should update bar" do
+    patch :update, id: @bar, bar: { address: @bar.address, bar_id: @bar.bar_id, contact_number: @bar.contact_number, description: @bar.description, hours: @bar.hours, large_pic_url: @bar.large_pic_url, name: @bar.name, small_pic_url: @bar.small_pic_url, twitter_name: @bar.twitter_name, x_coordinate: @bar.x_coordinate, y_coordinate: @bar.y_coordinate }
+    assert_redirected_to bar_path(assigns(:bar))
+  end
+
+  test "should destroy bar" do
+    assert_difference('Bar.count', -1) do
+      delete :destroy, id: @bar
+    end
+
+    assert_redirected_to bars_path
+  end
+end
