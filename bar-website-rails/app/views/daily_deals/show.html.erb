@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bar:</strong>
+  <%= @daily_deal.bar_id %>
+</p>
+
+<p>
+  <strong>Day of the week:</strong>
+  <%= @daily_deal.day_of_the_week %>
+</p>
+
+<p>
+  <strong>Deal:</strong>
+  <%= @daily_deal.deal %>
+</p>
+
+<%= link_to 'Edit', edit_daily_deal_path(@daily_deal) %> |
+<%= link_to 'Back', daily_deals_path %>

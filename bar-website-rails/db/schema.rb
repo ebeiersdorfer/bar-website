@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140408172018) do
+ActiveRecord::Schema.define(version: 20140408183443) do
 
   create_table "bars", force: true do |t|
     t.integer  "bar_id"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 20140408172018) do
     t.text     "description"
     t.decimal  "x_coordinate"
     t.decimal  "y_coordinate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "daily_deals", force: true do |t|
+    t.integer  "bar_id"
+    t.string   "day_of_the_week"
+    t.text     "deal"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

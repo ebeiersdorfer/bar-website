@@ -1,0 +1,18 @@
+<h1>Main#index</h1>
+<p>Find me in app/views/main/index.html.erb</p>
+
+
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<h1>Test</h1>
+
+<% @bars.each do |bar| %>
+  <div class="entry">
+    <h3><%= bar.name %></h3>
+    <p><%= sanitize(bar.description) %></p>
+    <p><%= bar.daily_deals.day_of_the_week %></p>
+  </div>
+<% end %>
+

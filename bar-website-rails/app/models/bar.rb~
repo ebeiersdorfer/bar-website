@@ -1,4 +1,7 @@
 class Bar < ActiveRecord::Base
+
+	has_many :daily_deals, dependent: :destroy
+
 	validates :bar_id, :name, presence: true
-	validates :name, uniqueness: true
+	validates :bar_id, uniqueness: true
 end

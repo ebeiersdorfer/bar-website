@@ -1,0 +1,31 @@
+<h1>Listing daily_deals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Bar</th>
+      <th>Day of the week</th>
+      <th>Deal</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @daily_deals.each do |daily_deal| %>
+      <tr>
+        <td><%= daily_deal.bar_id %></td>
+        <td><%= daily_deal.day_of_the_week %></td>
+        <td><%= daily_deal.deal %></td>
+        <td><%= link_to 'Show', daily_deal %></td>
+        <td><%= link_to 'Edit', edit_daily_deal_path(daily_deal) %></td>
+        <td><%= link_to 'Destroy', daily_deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Daily deal', new_daily_deal_path %>
