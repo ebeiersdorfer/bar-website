@@ -66,4 +66,20 @@ Bar.create(
   	description: 'This is a interesting description of this bar!',
   	x_coordinate: 39.00,    
   	y_coordinate: 39.00)
+  	
+DailyDeal.delete_all
+DailyDeal.create(
+	bar_id: 1,
+	day_of_the_week: 'Monday',
+	deal: '9pm-11pm: Half off domestic drafts')
+	
+DailyDeal.create(
+	bar_id: 1,
+	day_of_the_week: 'Tuesday',
+	deal: 'All Day: Free appetizers; 8pm-10pm: Half off Fireball shots')
+	
+DailyDeal.create(
+	bar_id: 1,
+	day_of_the_week: 'Wednesday',
+	deal: 'All Day: 20% off all Budweiser products')
 
