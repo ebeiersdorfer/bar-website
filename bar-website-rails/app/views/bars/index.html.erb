@@ -1,0 +1,47 @@
+<h1>Listing bars</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Bar</th>
+      <th>Name</th>
+      <th>Twitter name</th>
+      <th>Small pic url</th>
+      <th>Large pic url</th>
+      <th>Contact number</th>
+      <th>Hours</th>
+      <th>Address</th>
+      <th>Description</th>
+      <th>X coordinate</th>
+      <th>Y coordinate</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bars.each do |bar| %>
+      <tr>
+        <td><%= bar.bar_id %></td>
+        <td><%= bar.name %></td>
+        <td><%= bar.twitter_name %></td>
+        <td><%= bar.small_pic_url %></td>
+        <td><%= bar.large_pic_url %></td>
+        <td><%= bar.contact_number %></td>
+        <td><%= bar.hours %></td>
+        <td><%= bar.address %></td>
+        <td><%= bar.description %></td>
+        <td><%= bar.x_coordinate %></td>
+        <td><%= bar.y_coordinate %></td>
+        <td><%= link_to 'Show', bar %></td>
+        <td><%= link_to 'Edit', edit_bar_path(bar) %></td>
+        <td><%= link_to 'Destroy', bar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bar', new_bar_path %>

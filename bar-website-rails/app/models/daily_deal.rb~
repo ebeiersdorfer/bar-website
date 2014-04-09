@@ -1,0 +1,9 @@
+class DailyDeal < ActiveRecord::Base
+	belongs_to :bar, foreign_key: :bar_id
+	
+	validates :bar_id, :day_of_the_week, :deal, presence: true
+	validates :bar_id, uniqueness: {scope: :day_of_the_week}
+	
+	#validates :bar, presence: true
+
+end

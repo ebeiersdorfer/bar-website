@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bar_id: 1
+  name: MyString
+  twitter_name: MyString
+  small_pic_url: MyString
+  large_pic_url: MyString
+  contact_number: MyString
+  hours: MyString
+  address: MyString
+  description: MyText
+  x_coordinate: 9.99
+  y_coordinate: 9.99
+
+two:
+  bar_id: 1
+  name: MyString
+  twitter_name: MyString
+  small_pic_url: MyString
+  large_pic_url: MyString
+  contact_number: MyString
+  hours: MyString
+  address: MyString
+  description: MyText
+  x_coordinate: 9.99
+  y_coordinate: 9.99

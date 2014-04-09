@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bar_id: 1
+  day_of_the_week: MyString
+  deal: MyText
+
+two:
+  bar_id: 1
+  day_of_the_week: MyString
+  deal: MyText
