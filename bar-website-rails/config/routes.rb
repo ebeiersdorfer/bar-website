@@ -1,4 +1,5 @@
 BarWebsiteRails::Application.routes.draw do
+  get "calendar/index"
   get "main/index"
   resources :daily_deals
 

@@ -12,14 +12,14 @@
 	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
 	<script src="bootstrap.js”"> </script>
 	
-	<div class="container-fluid">
-		<h1><a href="#">Bar website!</a></h1>
+	<div class="container">
+		<h1><%= link_to 'Bar Website!', main_path %></h1>
 		<div class="navbar">
 			<div class="navbar-inner">
 				<div class="container">
 					<ul class="nav">
-						<li id="BarMenu"><a href="#">Bars</a></li>
-						<li id="CalanderMenu"><a href="#">Calender</a></li>
+						<li id="BarMenu"><%= link_to 'Bars', main_path %></li>
+						<li id="CalanderMenu"><%= link_to 'Calendar', calendar_index_path %></li>
 					</ul>  
 					<ul class="nav pull-right">
 						<form class="navbar-search pull-right">  
