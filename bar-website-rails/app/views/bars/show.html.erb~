@@ -60,7 +60,7 @@
 <% @bar.daily_deals.each do |deal| %>
   <div class="entry">
     <h3><%= deal.day_of_the_week %></h3>
-    <p><%= deal.deal.gsub! ';', "\n" %></p>
+    <p><%= deal.deal %></p>
   </div>
 <% end %>
 

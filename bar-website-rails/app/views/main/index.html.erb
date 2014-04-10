@@ -5,14 +5,11 @@
 <h1>Bars:</h1>
 
 <% if @bars.length > 0%>
-	<div class="entry">
-  		<%= @bars.length %>
-  	</div>
 	<% @bars.each do |bar| %>
   		<div class="entry">
   			<h3><%= link_to bar.name, bar %></h3>
     		<p><%= sanitize(bar.description) %></p>
-    		<p>Total number of deals (testing):<%= bar.daily_deals.count %></p>
+    		<!--<p>Total number of deals (testing):<%= bar.daily_deals.count %></p>-->
     		<hr>
   		</div>
 	<% end %>
