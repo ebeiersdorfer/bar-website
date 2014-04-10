@@ -1,5 +1,10 @@
 class MainController < ApplicationController
   def index
-  	@bars = Bar.order(:title)
+  	@bars = Bar.order(:name)
+  	@bars.keep_if {|v| v.name.include? params[:bar_search]}
+  end
+  
+  def search
+  	@bars = Bar.order(:contact_number)
   end
 end

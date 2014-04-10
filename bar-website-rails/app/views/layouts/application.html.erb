@@ -22,10 +22,9 @@
 						<li id="CalendarMenu"><%= link_to 'Calendar', calendar_index_path %></li>
 					</ul>  
 					<ul class="nav pull-right">
-						<form class="navbar-search pull-right">  
-							<input type="text" class="search-query" placeholder="Search">  
-						</form>
-					</ul>
+						<%=form_tag({controller: "main", action: "index"}, method: "get", class: "navbar-search pull-right") do %>
+							<input type="text" class="search-query" placeholder="Bar Name" name="bar_search"> 
+						<% end %>
 				</div>
 			</div>
 		</div>

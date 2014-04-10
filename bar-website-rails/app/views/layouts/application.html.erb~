@@ -19,13 +19,17 @@
 				<div class="container">
 					<ul class="nav">
 						<li id="BarMenu"><%= link_to 'Bars', main_path %></li>
-						<li id="CalanderMenu"><%= link_to 'Calendar', calendar_index_path %></li>
+						<li id="CalendarMenu"><%= link_to 'Calendar', calendar_index_path %></li>
 					</ul>  
 					<ul class="nav pull-right">
-						<form class="navbar-search pull-right">  
-							<input type="text" class="search-query" placeholder="Search">  
-						</form>
+						<%=form_tag({controller: "main", action: "index"}, method: "get", class: "navbar-search pull-right") do %>
+							<input type="text" class="search-query" placeholder="Bar Name" name="bar_search"> 
+						<% end %>
+						
 					</ul>
+					<form class="navbar-search pull-right">  
+							<input type="text" class="search-query" placeholder="Bar Name" name="bar_search">  
+					</form>
 				</div>
 			</div>
 		</div>
