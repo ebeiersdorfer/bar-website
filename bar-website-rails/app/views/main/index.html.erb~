@@ -4,12 +4,27 @@
 
 <h1>Test</h1>
 
-<% @bars.each do |bar| %>
-  <div class="entry">
-  	<h3><%= link_to bar.name, bar %></h3>
-    <p><%= sanitize(bar.description) %></p>
-    <p>Total number of deals (testing):<%= bar.daily_deals.count %></p>
-    <hr>
-  </div>
+<% if @bars.length > 0%>
+	<div class="entry">
+  		<%= @bars.length %>
+  	</div>
+	<% @bars.each do |bar| %>
+  		<div class="entry">
+  			<h3><%= link_to bar.name, bar %></h3>
+    		<p><%= sanitize(bar.description) %></p>
+    		<p>Total number of deals (testing):<%= bar.daily_deals.count %></p>
+    		<hr>
+  		</div>
+	<% end %>
+<% else %>
+	<div class="entry">
+  		<h3>Sorry, there seems to be no match!</h3>
+    	<hr>
+  	</div>
 <% end %>
+
+<script>
+var barMenu = document.getElementById("BarMenu");
+barMenu.className += " active";
+</script>
 
