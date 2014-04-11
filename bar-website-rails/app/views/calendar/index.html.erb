@@ -2,8 +2,11 @@
 
 <p>Day is : <%= @currentDay.strftime("%A") %></p>
 
+<!-- Creates links for the next 8 days-->
 <%= link_to 'Today', calendar_index_path(daysAdv: 0) %> |
 <%= link_to 'Tomorrow', calendar_index_path(daysAdv: 1) %> |
+<!-- These days use the strftime to print the month/day of that current day-->
+<!-- Uses link to with daysAdv parameter to reload page with new current day, Not ideal solution IMO-->
 <%= link_to Time.now.advance(days: 2).strftime("%-m/%-d"), calendar_index_path(daysAdv: 2) %> |
 <%= link_to Time.now.advance(days: 3).strftime("%-m/%-d"), calendar_index_path(daysAdv: 3) %> |
 <%= link_to Time.now.advance(days: 4).strftime("%-m/%-d"), calendar_index_path(daysAdv: 4) %> |

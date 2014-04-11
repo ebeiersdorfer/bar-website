@@ -17,7 +17,7 @@
 		<% if deal.day_of_the_week == @currentDay.strftime("%A") %>
   			<div class="entry">
     			<h3><%= bar.name %></h3>
-    			<p><%= (deal.deal.gsub ';', '\n').html_safe %></p>
+    			<p><%= (deal.deal.gsub ';', '<br>').html_safe %></p>
   			</div>
   		<% end %>
   	<% end %>
