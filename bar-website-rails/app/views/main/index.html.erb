@@ -38,8 +38,57 @@
 </div>
 </div>
 
+
+<button type="button" id="location">Get Latitude</button>
+<p id="cLoc"> 0 </p>
+
+
 <script>
 var barMenu = document.getElementById("BarMenu");
 barMenu.className += " active";
 </script>
 
+
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3SN-tvewofza0qi6XqEMH2pyFX148Bm8&sensor=false">
+    </script>
+
+	
+<script type="text/javascript">
+	var cbutton = document.getElementById("location");
+	cbutton.onclick = getLocation;
+	
+	function getLocation()
+    {
+    	if (navigator.geolocation)
+    	{
+    		var options = {
+				timeout: 5000,
+    		    maximumAge: 0
+			};
+		console.log("test2");
+		//Keeps failing to connect, works outside of this enviorment, may test when server works.
+    	navigator.geolocation.getCurrentPosition( success, error,options);
+    	} else { 
+    		x.innerHTML= "Geolocation is not supported by this browser."; 
+    	}
+    }
+
+
+function error(e) {
+	console.log("error code:" + e.code + 'message: ' + e.message );
+}
+function success(position) {
+	var  lat  = position.coords.latitude;
+    var  lng =  position.coords.longitude;
+
+	//This is my portion
+	var locTextField = document.getElementById("cLoc");
+	locTextField.innerHTML = lat;
+	console.log(lat);
+	//--
+}
+	
+google.maps.event.addDomListener(window, 'load', getLocation() );
+		
+</script>
