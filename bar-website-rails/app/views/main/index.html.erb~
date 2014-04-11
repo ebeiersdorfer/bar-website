@@ -74,7 +74,7 @@ barMenu.className += " active";
     	}
     }
 
-}
+
 function error(e) {
 	console.log("error code:" + e.code + 'message: ' + e.message );
 }
