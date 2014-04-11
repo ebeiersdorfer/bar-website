@@ -316,7 +316,7 @@ DailyDeal.create(
 DailyDeal.create(
 	bar_id: 7,
 	day_of_the_week: 'Saturday',
-	deal: 'Happy Hour 2-7: 50% of all Drinks;$3 Fireball;$1 Off all Craft/Import Beers;$3 Bombs')
+	deal: 'Happy Hour 2-7: 50% of all Drinks;$3 Fireball;$1 Off all Craft/Import Beers;$3 Bombs;8-10: $1 Wells and Bombs')
 	
 DailyDeal.create(
 	bar_id: 7,

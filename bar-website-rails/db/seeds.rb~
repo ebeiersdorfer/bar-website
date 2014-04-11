@@ -30,7 +30,7 @@ Bar.create(
 	address: '1880 North High St, Columbus, Ohio 43201',
   	description: %{We are a Hole In The Wall Basement Bar located in the Heart of Ohio State's Campus. Cheap beer, cheap drinks and a brashness that'll oddly make you feel like we're instant friends! #TOOSLOVE},
   	x_coordinate: 39.00,    
-  	y_coordinate: 39.00)Ugly
+  	y_coordinate: 39.00)
   	
 Bar.create(
 	bar_id: 3,

@@ -2,6 +2,8 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
+<div class="row">
+<div class="span8">
 <h1>Bars:</h1>
 
 <% if @bars.length > 0%>
@@ -19,6 +21,22 @@
     	<hr>
   	</div>
 <% end %>
+</div>
+<div class="span4">
+	<h3>Todays deals:</h3>
+	<% @bars.each do |bar| %>
+		<% bar.daily_deals.each do |deal| %>
+			<% if deal.day_of_the_week == Time.now.strftime("%A") %>
+  				<div class="entry">
+    				<h4><%= bar.name %></h4>
+    				<p><%= (deal.deal.gsub ';', '<br>').html_safe %></p>
+    				<hr>
+  				</div>
+  			<% end %>
+  		<% end %>
+	<% end %>
+</div>
+</div>
 
 <script>
 var barMenu = document.getElementById("BarMenu");
