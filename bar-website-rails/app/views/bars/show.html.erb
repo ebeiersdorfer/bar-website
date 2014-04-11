@@ -57,10 +57,11 @@
 
 <hr>
 
+<!-- This just iterates through all the daily deals related to this bar and prints them-->
 <% @bar.daily_deals.each do |deal| %>
   <div class="entry">
     <h3><%= deal.day_of_the_week %></h3>
-    <p><%= deal.deal %></p>
+    <p><%= (deal.deal.gsub ';', '<br>').html_safe %></p>
   </div>
 <% end %>
 

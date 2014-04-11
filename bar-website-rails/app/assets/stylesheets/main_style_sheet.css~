@@ -1,0 +1,79 @@
+﻿/* CSS for fixed-fluid layout */
+body {
+	background-color:#EEEEEE;
+}
+
+.mainDiv{
+	width: 1160px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.center{
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.fixed {
+    width: 200px;  /* the fixed width required */
+    float: left;
+	margin: 8px;
+	display: inline-block;
+}
+
+
+.fixed-right {
+    width: 240px;  /* the fixed width required */
+	float: left;
+	margin: 8px;
+	display: inline-block;
+}
+
+/*
+.fixed + div {
+     margin-left: 150px;   must match the fixed width in the .fixed class 
+     overflow: hidden;
+}
+*/
+
+.box {
+	background-color: #FFFFFF;
+	border:1px solid;
+	border-color: #DDDDDD;
+	border-radius:5px;
+}
+
+.fixed-wide {
+	/*margin-left: 220px;*/
+	width: 660px;  /* the fixed width required */
+	float: left;
+	margin: 8px;
+	display: inline-block;
+}
+
+
+/* CSS to ensure sidebar and content are same height (optional) */
+
+html, body {
+    height: 100%;
+}
+
+.fill { 
+    min-height: 100%;
+    position: relative;
+}
+
+.filler:after{
+    background-color:inherit;
+    bottom: 0;
+    content: "";
+    height: auto;
+    min-height: 100%;
+    left: 0;
+    margin:inherit;
+    right: 0;
+    position: absolute;
+    top: 0;
+    width: inherit;
+    z-index: -1;  
+}

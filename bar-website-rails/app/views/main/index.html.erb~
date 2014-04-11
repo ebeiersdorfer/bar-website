@@ -1,19 +1,124 @@
-<h1>Main#index</h1>
-<p>Find me in app/views/main/index.html.erb</p>
-
-
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<h1>Test</h1>
+<div class="row">
+		<!--<div class="mainDiv">-->
+	<div class="span8">
+		<div class = "box">
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs nav-justified" style="background-color: #DDDDDD">
+				<li class="active"><a href="#list" data-toggle="tab">List</a></li>
+				<li><a href="#tiles" data-toggle="tab">Tiles</a></li>
+				<li><a href="#map" data-toggle="tab">Map</a></li>
+			</ul>
+			
+			<div class="tab-content">
+				<div class="tab-pane active" id="list">
+					<h1>Bars:</h1>
 
-<% @bars.each do |bar| %>
-  <div class="entry">
-  	<h3><%= link_to bar.name, bar %></h3>
-    <p><%= sanitize(bar.description) %></p>
-    <p><%= bar.daily_deals.count %></p>
-    <hr>
-  </div>
-<% end %>
+					<% if @bars.length > 0%>
+						<% @bars.each do |bar| %>
+  							<div class="entry">
+  								<h3><%= link_to bar.name, bar %></h3>
+    							<p><%= sanitize(bar.description) %></p>
+    							<!--<p>Total number of deals (testing):<%= bar.daily_deals.count %></p>-->
+    							<hr>
+  							</div>
+						<% end %>
+					<% else %>
+						<div class="entry">
+  							<h3>Sorry, there seems to be no match!</h3>
+    						<hr>
+  						</div>
+					<% end %>
+				</div>
+				<div class="tab-pane" id="tiles">...</div>
+				<div class="tab-pane" id="map">...</div>
+			</div>
+		</div>		
+	</div>
+	<div class="span4">
+		<div class = "box">
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs nav-justified" style="background-color: #DDDDDD">
+				<li class="active"><a href="#dealTab" data-toggle="tab">Today's Deals</a></li>
+				<li><a href="#twitterTab" data-toggle="tab">Twitter Feeds</a></li>
+			</ul>
+			
+			<div class="tab-content">
+				<div class="tab-pane active" id="dealTab">
+					<h3>Todays deals:</h3>
+					<% @bars.each do |bar| %>
+						<% bar.daily_deals.each do |deal| %>
+							<% if deal.day_of_the_week == Time.now.strftime("%A") %>
+  								<div class="entry">
+    								<h4><%= bar.name %></h4>
+    								<p><%= (deal.deal.gsub ';', '<br>').html_safe %></p>
+    								<hr>
+  								</div>
+  							<% end %>
+  						<% end %>
+					<% end %>
+				</div>
+				<div class="tab-pane" id="twitterTab">...</div>
+			</div>
+		</div>		
+	</div>
+</div>
 
+
+
+<button type="button" id="location">Get Latitude</button>
+<p id="cLoc"> 0 </p>
+
+
+<script>
+var barMenu = document.getElementById("BarMenu");
+barMenu.className += " active";
+</script>
+
+
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3SN-tvewofza0qi6XqEMH2pyFX148Bm8&sensor=false">
+    </script>
+
+	
+<script type="text/javascript">
+	var cbutton = document.getElementById("location");
+	cbutton.onclick = getLocation;
+	
+	function getLocation()
+    {
+    	if (navigator.geolocation)
+    	{
+    		var options = {
+				timeout: 5000,
+    		    maximumAge: 0
+			};
+		console.log("test2");
+		//Keeps failing to connect, works outside of this enviorment, may test when server works.
+    	navigator.geolocation.getCurrentPosition( success, error,options);
+    	} else { 
+    		x.innerHTML= "Geolocation is not supported by this browser."; 
+    	}
+    }
+
+
+function error(e) {
+	console.log("error code:" + e.code + 'message: ' + e.message );
+}
+function success(position) {
+	var  lat  = position.coords.latitude;
+    var  lng =  position.coords.longitude;
+
+	//This is my portion
+	var locTextField = document.getElementById("cLoc");
+	locTextField.innerHTML = lat;
+	console.log(lat);
+	//--
+}
+	
+google.maps.event.addDomListener(window, 'load', getLocation() );
+		
+</script>
