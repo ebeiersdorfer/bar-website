@@ -4,6 +4,7 @@ class CreateBars < ActiveRecord::Migration
       t.integer :bar_id
       t.string :name
       t.string :twitter_name
+			t.string :twitter_widget_id
       t.string :small_pic_url
       t.string :large_pic_url
       t.string :contact_number

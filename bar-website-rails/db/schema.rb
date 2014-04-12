@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140408183443) do
+ActiveRecord::Schema.define(version: 20140412151727) do
 
   create_table "bars", force: true do |t|
     t.integer  "bar_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140408183443) do
     t.decimal  "y_coordinate"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "twitter_widget_id"
   end
 
   create_table "daily_deals", force: true do |t|
