@@ -1,3 +1,17 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+
 /*!
  * Bootstrap v2.3.2
  *
@@ -7,6 +21,7 @@
  *
  * Designed and built with all the love in the world by @mdo and @fat.
  */
+
 
 .clearfix {
   *zoom: 1;
@@ -226,10 +241,8 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
-/*  color: #333333;*
-  background-color: #ffffff;*/
-	color: #FFF;
-	background-color: #4D4D4D;
+  color: #333333;
+  background-color: #ffffff;
 }
 
 a {
@@ -4069,12 +4082,12 @@ input[type="submit"].btn.btn-mini {
 
 .nav-tabs > li > a {
   padding-top: 8px;
-  padding-bottom: 7px;
+  padding-bottom: 8px;
   line-height: 20px;
-  /*border: 1px solid transparent;*/
-  /*-webkit-border-radius: 4px 4px 0 0;
+  border: 1px solid transparent;
+  -webkit-border-radius: 4px 4px 0 0;
      -moz-border-radius: 4px 4px 0 0;
-          border-radius: 4px 4px 0 0;*/
+          border-radius: 4px 4px 0 0;
 }
 
 .nav-tabs > li > a:hover,
@@ -4089,7 +4102,7 @@ input[type="submit"].btn.btn-mini {
   cursor: default;
   background-color: #ffffff;
   border: 1px solid #ddd;
-  /*border-bottom-color: transparent;*/
+  border-bottom-color: transparent;
 }
 
 .nav-pills > li > a {
@@ -6166,4 +6179,168 @@ a.badge:focus {
 
 .affix {
   position: fixed;
+}
+/* CSS for fixed-fluid layout */
+
+body {
+	background-color:#EEEEEE;
+}
+
+.body-background{
+	/*background-color:#EEEEEE;*/
+	background-image:url("purple.png");
+}
+
+.mainDiv{
+	width: 1160px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.center{
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.fixed {
+    width: 200px;  /* the fixed width required */
+    float: left;
+	margin: 8px;
+	display: inline-block;
+}
+
+
+.fixed-right {
+    width: 240px;  /* the fixed width required */
+	float: left;
+	margin: 8px;
+	display: inline-block;
+}
+
+/*
+.fixed + div {
+     margin-left: 150px;   must match the fixed width in the .fixed class 
+     overflow: hidden;
+}
+*/
+
+.box {
+	background-color: #FFFFFF;
+	border:1px solid;
+	border-color: #DDDDDD;
+	border-radius:5px;
+}
+
+.fixed-wide {
+	/*margin-left: 220px;*/
+	width: 660px;  /* the fixed width required */
+	float: left;
+	margin: 8px;
+	display: inline-block;
+}
+
+
+/* CSS to ensure sidebar and content are same height (optional) */
+
+html, body {
+    height: 100%;
+}
+
+.fill { 
+    min-height: 100%;
+    position: relative;
+}
+
+.filler:after{
+    background-color:inherit;
+    bottom: 0;
+    content: "";
+    height: auto;
+    min-height: 100%;
+    left: 0;
+    margin:inherit;
+    right: 0;
+    position: absolute;
+    top: 0;
+    width: inherit;
+    z-index: -1;  
+}
+/* line 1, /home/pasz/CSE3901/bar-website/bar-website-rails/app/assets/stylesheets/scaffolds.css.scss */
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 9, /home/pasz/CSE3901/bar-website/bar-website-rails/app/assets/stylesheets/scaffolds.css.scss */
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 15, /home/pasz/CSE3901/bar-website/bar-website-rails/app/assets/stylesheets/scaffolds.css.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 21, /home/pasz/CSE3901/bar-website/bar-website-rails/app/assets/stylesheets/scaffolds.css.scss */
+a {
+  color: #000;
+}
+/* line 23, /home/pasz/CSE3901/bar-website/bar-website-rails/app/assets/stylesheets/scaffolds.css.scss */
+a:visited {
+  color: #666;
+}
+/* line 26, /home/pasz/CSE3901/bar-website/bar-website-rails/app/assets/stylesheets/scaffolds.css.scss */
+a:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+/* line 33, /home/pasz/CSE3901/bar-website/bar-website-rails/app/assets/stylesheets/scaffolds.css.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 38, /home/pasz/CSE3901/bar-website/bar-website-rails/app/assets/stylesheets/scaffolds.css.scss */
+#notice {
+  color: green;
+}
+
+/* line 42, /home/pasz/CSE3901/bar-website/bar-website-rails/app/assets/stylesheets/scaffolds.css.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 48, /home/pasz/CSE3901/bar-website/bar-website-rails/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 55, /home/pasz/CSE3901/bar-website/bar-website-rails/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 65, /home/pasz/CSE3901/bar-website/bar-website-rails/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
 }

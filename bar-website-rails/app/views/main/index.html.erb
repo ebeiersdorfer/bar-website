@@ -6,24 +6,26 @@
 	<!--The Left large box-->
 	<div class="span8">
 		<!--Gives characteristics of the box outline-->
-		<div class = "box">
+		<div>
 			<!-- Nav tabs -->
-			<ul class="nav nav-tabs nav-justified" style="background-color: #DDDDDD">
-				<li class="active"><a href="#list" data-toggle="tab">List</a></li>
+			<ul class="nav nav-tabs" style="background-color: #DDDDDD">
+				<li class="active"><a href="#list" data-toggle="tab">Bars</a></li>
 				<li><a href="#tiles" data-toggle="tab">Tiles</a></li>
 				<li><a href="#map" data-toggle="tab">Map</a></li>
 			</ul>
 			<div class="tab-content">
 				<!-- This is the list tabl-->
 				<div class="tab-pane active" id="list">
-					<h1>Bars:</h1>
 					<!-- This goes through the bar array (described and created in the controller and prints each Bar-->
 					<% if @bars.length > 0%>
 						<% @bars.each do |bar| %>
-  							<div class="entry">
-  								<h3><%= link_to bar.name, bar %></h3>
-    							<p><%= sanitize(bar.description) %></p>
-    							<hr>
+  							<div class="barBox">
+  								<div class="barBoxContent">
+  									<h3><%= link_to bar.name, bar %></h3>
+  									<hr>
+  									<br>
+    								<p><%= (bar.address.sub ',', '<br>').html_safe %></p>
+    							</div>
   							</div>
 						<% end %>
 					<!-- Runs if no bars are in the array (Should only occur when no matches for search) -->
@@ -43,7 +45,7 @@
 	<div class="span4">
 		<div class = "box">
 			<!-- Nav tabs -->
-			<ul class="nav nav-tabs nav-justified" style="background-color: #DDDDDD">
+			<ul class="nav nav-tabs" style="background-color: #DDDDDD">
 				<li class="active"><a href="#dealTab" data-toggle="tab">Today's Deals</a></li>
 				<li><a href="#twitterTab" data-toggle="tab">Twitter Feeds</a></li>
 			</ul>

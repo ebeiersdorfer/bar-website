@@ -139,7 +139,7 @@ Bar.create(
 	address: '20 E. Frambes Ave, Columbus, Ohio 43201',
   	description: %{Since the sixties, the Out R Inn is a landmark of the Ohio State University},
   	x_coordinate: 40.005161,    
-  	y_coordinate: 83.008484)
+  	y_coordinate: -83.008484)
   	
 Bar.create(
 	bar_id: 11,

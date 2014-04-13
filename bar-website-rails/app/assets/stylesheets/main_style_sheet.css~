@@ -3,6 +3,16 @@ body {
 	background-color:#EEEEEE;
 }
 
+.body-background{
+	background-color:#EFEFEF;
+	
+
+}
+
+h3 {
+	margin: 0px;
+}
+
 .mainDiv{
 	width: 1160px;
 	margin-left:auto;
@@ -40,7 +50,18 @@ body {
 	background-color: #FFFFFF;
 	border:1px solid;
 	border-color: #DDDDDD;
-	border-radius:5px;
+	/*border-radius:5px;*/
+}
+
+.barBox {
+	margin: 5px 0px 5px;
+	background-color: #FFFFFF;
+	border:1px solid;
+	border-color: #DDDDDD;
+}
+
+.barBoxContent {
+	padding: 5px;
 }
 
 .fixed-wide {

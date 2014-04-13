@@ -3,29 +3,31 @@
 <% end %>
 
 <div class="row">
-		<!--<div class="mainDiv">-->
+	<!--The Left large box-->
 	<div class="span8">
-		<div class = "box">
+		<!--Gives characteristics of the box outline-->
+		<div>
 			<!-- Nav tabs -->
-			<ul class="nav nav-tabs nav-justified" style="background-color: #DDDDDD">
-				<li class="active"><a href="#list" data-toggle="tab">List</a></li>
+			<ul class="nav nav-tabs" style="background-color: #DDDDDD">
+				<li class="active"><a href="#list" data-toggle="tab">Bars</a></li>
 				<li><a href="#tiles" data-toggle="tab">Tiles</a></li>
 				<li><a href="#map" data-toggle="tab">Map</a></li>
 			</ul>
-			
 			<div class="tab-content">
+				<!-- This is the list tabl-->
 				<div class="tab-pane active" id="list">
-					<h1>Bars:</h1>
-
+					<!-- This goes through the bar array (described and created in the controller and prints each Bar-->
 					<% if @bars.length > 0%>
 						<% @bars.each do |bar| %>
-  							<div class="entry">
-  								<h3><%= link_to bar.name, bar %></h3>
-    							<p><%= sanitize(bar.description) %></p>
-    							<!--<p>Total number of deals (testing):<%= bar.daily_deals.count %></p>-->
-    							<hr>
+  							<div class="barBox">
+  								<div class="barBoxContent">
+  									<h3><%= link_to bar.name, bar %></h3>
+  									<hr>
+    								<p><%= (bar.address.sub ',', '<br>').html_safe %></p>
+    							</div>
   							</div>
 						<% end %>
+					<!-- Runs if no bars are in the array (Should only occur when no matches for search) -->
 					<% else %>
 						<div class="entry">
   							<h3>Sorry, there seems to be no match!</h3>
@@ -38,17 +40,19 @@
 			</div>
 		</div>		
 	</div>
+	<!-- This is the right box-->
 	<div class="span4">
 		<div class = "box">
 			<!-- Nav tabs -->
-			<ul class="nav nav-tabs nav-justified" style="background-color: #DDDDDD">
+			<ul class="nav nav-tabs" style="background-color: #DDDDDD">
 				<li class="active"><a href="#dealTab" data-toggle="tab">Today's Deals</a></li>
 				<li><a href="#twitterTab" data-toggle="tab">Twitter Feeds</a></li>
 			</ul>
-			
+			<!-- This is the todays deals tab-->
 			<div class="tab-content">
 				<div class="tab-pane active" id="dealTab">
 					<h3>Todays deals:</h3>
+					<!-- This code searches all bars in the array and traverses their deals and prints each deal that corresponds with current day of the week-->
 					<% @bars.each do |bar| %>
 						<% bar.daily_deals.each do |deal| %>
 							<% if deal.day_of_the_week == Time.now.strftime("%A") %>
@@ -68,23 +72,33 @@
 </div>
 
 
-
+<!-- This is just test code used with the positioning code -->
 <button type="button" id="location">Get Latitude</button>
 <p id="cLoc"> 0 </p>
 
 
 <script>
+//This just makes the Bar tab on the navbar to active
 var barMenu = document.getElementById("BarMenu");
 barMenu.className += " active";
 </script>
 
 
-
+<!-- All code below deals with finding the current location-->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3SN-tvewofza0qi6XqEMH2pyFX148Bm8&sensor=false">
+	//This is using Michaels google API key
     </script>
 
 	
 <script type="text/javascript">
+	/*
+	This code does not seems to connect to google servers while inside the virtual box.
+	This is a hypothesis since the actual google map wont find location while in the virtual machine and
+	this code seems to work fine when ran in my (Joe) windows. Will further test and implement when
+	the code is running on the server!
+	
+	The goal is to use these coordinates to order the bars based on the current location
+	*/
 	var cbutton = document.getElementById("location");
 	cbutton.onclick = getLocation;
 	
@@ -105,20 +119,20 @@ barMenu.className += " active";
     }
 
 
-function error(e) {
-	console.log("error code:" + e.code + 'message: ' + e.message );
-}
-function success(position) {
-	var  lat  = position.coords.latitude;
-    var  lng =  position.coords.longitude;
+	function error(e) {
+		console.log("error code:" + e.code + 'message: ' + e.message );
+	}
+	function success(position) {
+		var  lat  = position.coords.latitude;
+	    var  lng =  position.coords.longitude;
 
-	//This is my portion
-	var locTextField = document.getElementById("cLoc");
-	locTextField.innerHTML = lat;
-	console.log(lat);
-	//--
-}
+		//This is my portion
+		var locTextField = document.getElementById("cLoc");
+		locTextField.innerHTML = lat;
+		console.log(lat);
+		//--
+	}
 	
-google.maps.event.addDomListener(window, 'load', getLocation() );
-		
+	google.maps.event.addDomListener(window, 'load', getLocation() );
+	
 </script>

@@ -4,7 +4,13 @@ body {
 }
 
 .body-background{
-	background-color:#EEEEEE;
+	background-color:#EFEFEF;
+	
+
+}
+
+h3,hr {
+	margin: 0px;
 }
 
 .mainDiv{
@@ -44,7 +50,18 @@ body {
 	background-color: #FFFFFF;
 	border:1px solid;
 	border-color: #DDDDDD;
-	border-radius:5px;
+	/*border-radius:5px;*/
+}
+
+.barBox {
+	margin: 5px 0px 5px;
+	background-color: #FFFFFF;
+	border:1px solid;
+	border-color: #DDDDDD;
+}
+
+.barBoxContent {
+	padding: 5px;
 }
 
 .fixed-wide {
