@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+<%= favicon_link_tag 'favicon.ico' %>
   <link rel="stylesheet" type="text/css" href="bootstrap.css">
   <link rel="stylesheet" type="text/css" href="main_style_sheet.css">
 </head>
@@ -15,7 +16,11 @@
 	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
 	<script src="bootstrap.js”"> </script>
 
+<<<<<<< HEAD
+	<div class="container" >
+=======
 	<div class="container">
+>>>>>>> 8f5280b64025c8b0eb75f64f5f1d2dfffbedb4d0
 		<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
 			<div class="navbar-inner">
 
@@ -23,20 +28,27 @@
 					<ul class="nav navbar-nav">
 						<li id="BarMenu"><%= link_to 'Bars', main_path%></li>
 						<li id="CalendarMenu"><%= link_to 'Calendar', calendar_index_path %></li>
+						<li id="LocateBars"><%= link_to 'Bars Locator Website', main_path %></li>
 					</ul>  
+<<<<<<< HEAD
+
+					<ul class="nav pull-right">
+						<%=form_tag({controller: "/main", action: "index"}, method: "get", class: "navbar-search pull-right") do %>
+=======
 					<!--<center><a class="brand" href="./index.html">Locate Bars</a></center>-->
 					<ul class="nav navbar-nav pull-right">
 						<%=form_tag({controller: "/main", action: "index"}, method: "get", class: "navbar-search") do %>
+>>>>>>> 8f5280b64025c8b0eb75f64f5f1d2dfffbedb4d0
 							<input type="text" class="search-query" placeholder="Bar Name" name="bar_search"> 
 						<% end %>
 						<% if user_signed_in? %> 
 							<li>Logged in as <strong><%= current_user.email %></strong>.</li>
-  							<li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> | </li>
-  							<li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %> </li>
+  							<li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |</li>
+  							<li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
 						<% else %>
 							<!-- Remove sign up line -->
-  							<li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> | </li>
-  							<li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %> </li>
+  							<li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>
+  							<li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
 						<% end %> 
 					</ul>
 				</div>
