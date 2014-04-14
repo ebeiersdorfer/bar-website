@@ -1,0 +1,181 @@
+﻿/* CSS for fixed-fluid layout */
+body {
+	background-color:#EEEEEE;
+}
+
+.body-background{
+	background-color:#EFEFEF;
+	
+
+}
+
+.link:link { 
+  color: #FFFFFF;
+}
+.link:visited { 
+  color: #FFFFFF;
+}
+.link:hover { 
+  background-color: transparent;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+.link:active { 
+  color: #FFFFFF;
+}
+
+h3,hr {
+	margin: 0px;
+}
+
+
+
+/* These deal with tiles */
+
+.barText {
+	padding: 0px;
+	margin: 0px;
+	color: #FFFFFF;
+	/*width: 225px;
+	height: 225px;*/
+	font-weight:bold;
+	font-size:16px;
+	top: -100px;
+	position: relative;
+	/*z-index:10;*/
+	text-align: center;
+	overflow:hidden;
+	opacity:0;
+}
+
+.barImage{
+	width: 150px;
+	height: 150px;
+	top: -1px;
+	left: -1px
+	position: relative;
+	overflow:hidden;
+	padding: 0px;
+	margin: 0px;
+	/*z-index:9;*/
+	-webkit-transform:scale(1.01); /*Webkit: Scale down image to 0.8x original size*/
+	-moz-transform:scale(1.01); /*Mozilla scale version*/
+	-o-transform:scale(1.01); /*Opera scale version*/
+	-webkit-transition-duration: 0.5s; /*Webkit: Animation duration*/
+	-moz-transition-duration: 0.5s; /*Mozilla duration version*/
+	-o-transition-duration: 0.5s; /*Opera duration version*/
+}
+
+.imgHovered{
+	-webkit-transform:scale(1.1); /*Webkit: Scale up image to 1.2x original size*/
+	-moz-transform:scale(1.1); /*Mozilla scale version*/
+	-o-transform:scale(1.1); /*Opera scale version*/
+	box-shadow:0px 0px 30px gray; /*CSS3 shadow: 30px blurred shadow all around image*/
+	-webkit-box-shadow:0px 0px 30px gray; /*Safari shadow version*/
+	-moz-box-shadow:0px 0px 30px gray; /*Mozilla shadow version*/
+}
+
+.barSquare {
+	
+    height: 150px;
+    width: 150px;
+    border-style:solid;
+    border-width: 1px;
+	border-color: #555555;
+    /*border-color: #293e6a;*/
+	/*border-radius:3px;*/
+    /*border-color: #293e6a;*/
+    background-color: #000000;
+    float: left;
+    margin:5px;
+    padding:0px;
+	box-shadow: 5px 5px 12px #888888;
+	overflow:hidden;
+	
+}
+
+.mainDiv{
+	width: 1160px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.center{
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.fixed {
+    width: 200px;  /* the fixed width required */
+    float: left;
+	margin: 8px;
+	display: inline-block;
+}
+
+
+.fixed-right {
+    width: 240px;  /* the fixed width required */
+	float: left;
+	margin: 8px;
+	display: inline-block;
+}
+
+/*
+.fixed + div {
+     margin-left: 150px;   must match the fixed width in the .fixed class 
+     overflow: hidden;
+}
+*/
+
+.box {
+	background-color: #FFFFFF;
+	border:1px solid;
+	border-color: #DDDDDD;
+	/*border-radius:5px;*/
+}
+
+.barBox {
+	margin: 5px 0px 5px;
+	background-color: #FFFFFF;
+	border:1px solid;
+	border-color: #DDDDDD;
+}
+
+.barBoxContent {
+	padding: 5px;
+}
+
+.fixed-wide {
+	/*margin-left: 220px;*/
+	width: 660px;  /* the fixed width required */
+	float: left;
+	margin: 8px;
+	display: inline-block;
+}
+
+
+/* CSS to ensure sidebar and content are same height (optional) */
+
+html, body {
+    height: 100%;
+}
+
+.fill { 
+    min-height: 100%;
+    position: relative;
+}
+
+.filler:after{
+    background-color:inherit;
+    bottom: 0;
+    content: "";
+    height: auto;
+    min-height: 100%;
+    left: 0;
+    margin:inherit;
+    right: 0;
+    position: absolute;
+    top: 0;
+    width: inherit;
+    z-index: -1;  
+}

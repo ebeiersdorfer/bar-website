@@ -1,15 +1,198 @@
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3SN-tvewofza0qi6XqEMH2pyFX148Bm8&sensor=false"></script>
 
-<h1>Test</h1>
+<%= javascript_tag "var bar_names = #{@names};" %>
+<%= javascript_tag "var bar_lat = #{ @lats.to_json };" %>
+<%= javascript_tag "var bar_lon = #{@lons.to_json};" %>
+<%= javascript_tag "var bar_address = #{@addresses};" %>
+<%= javascript_tag "var bar_links = #{@links};" %>
+<%= javascript_include_tag 'barmap' %>
 
-<% @bars.each do |bar| %>
-  <div class="entry">
-  	<h3><%= link_to bar.name, bar %></h3>
-    <p><%= sanitize(bar.description) %></p>
-    <p>Total number of deals (testing):<%= bar.daily_deals.count %></p>
-    <hr>
-  </div>
-<% end %>
+<div class="row">
+	<!--The Left large box-->
+	<div class="span8">
+		<!--Gives characteristics of the box outline-->
+		<div>
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" style="background-color: #DDDDDD">
+				<li class="active"><a href="#list" data-toggle="tab">Bars</a></li>
+				<li><a href="#tiles" data-toggle="tab">Tiles</a></li>
+				<li><a href="#map" data-toggle="tab">Map</a></li>
+			</ul>
+			<div class="tab-content">
+				<!-- This is the list tabl-->
+				<div class="tab-pane active" id="list">
+					<!-- This goes through the bar array (described and created in the controller and prints each Bar-->
+					<% if @bars.length > 0%>
+						<% @bars.each do |bar| %>
+  							<div class="barBox">
+  								<div class="barBoxContent">
+  									<h3><%= link_to bar.name, bar %></h3>
+  									<hr>
+  									<br>
+    								<p><%= (bar.address.sub ',', '<br>').html_safe %></p>
+    							</div>
+  							</div>
+						<% end %>
+					<!-- Runs if no bars are in the array (Should only occur when no matches for search) -->
+					<% else %>
+						<div class="entry">
+  							<h3>Sorry, there seems to be no match!</h3>
+    						<hr>
+  						</div>
+					<% end %>
+				</div>
+				<div class="tab-pane" id="tiles">
+					<% @bars.each do |bar| %>			
+						<div class = "barSquare">
+							<%= image_tag(bar.small_pic_url, alt: bar.name + "image", class: "barImage") %>
+							<p class = "barText"> <%= link_to bar.name, bar%></p>
+						</div>
+					<% end %>	
 
+        			<script type="text/javascript">
+						//This script just adds effects to tiles
+						
+							//jquery that adds a little interaction once the page loads
+						$(document).ready(function() {
+							//This section is ment to add a little animation on page load.
+							/*			
+							$('.barSquare').animate(
+							{
+							opactiy: 1,
+							left: "-=10px"
+							}, 800);
+							*/
+			
+							//Deals with fading on hovering
+							$(document).on('mouseenter', '.barSquare', function () {
+								$("> img", this).stop();
+								$("> p", this).stop();
+								$("> img", this).fadeTo('fast', 0.5);
+								$("> img", this).addClass("imgHovered");
+								$("> p", this).fadeTo('slow', 1);
+							}).on('mouseleave', '.barSquare', function() { 
+								$("> img", this).stop();
+								$("> p", this).stop();
+								$("> img", this).fadeTo('fast', 1); 
+								$("> img", this).removeClass("imgHovered");
+								$("> p", this).fadeTo('slow', 0);
+							});
+						});
+        			</script>
+				</div>
+				<div class="tab-pane" id="map">
+					<div class="barBox">
+						<div class="barBoxContent">
+							<div id="map-canvas" style="width:600px; height: 420px;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</div>
+	<!-- This is the right box-->
+	<div class="span4">
+		<div class = "box">
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" style="background-color: #DDDDDD">
+				<li class="active"><a href="#dealTab" data-toggle="tab">Today's Deals</a></li>
+				<li><a href="#twitterTab" data-toggle="tab">Twitter Feeds</a></li>
+			</ul>
+			<!-- This is the todays deals tab-->
+			<div class="tab-content">
+				<div class="tab-pane active" id="dealTab">
+					<h3>Todays deals:</h3>
+					<!-- This code searches all bars in the array and traverses their deals and prints each deal that corresponds with current day of the week-->
+					<% @bars.each do |bar| %>
+						<% bar.daily_deals.each do |deal| %>
+							<% if deal.day_of_the_week == Time.now.strftime("%A") %>
+  								<div class="entry">
+    								<h4><%= bar.name %></h4>
+    								<p><%= (deal.deal.gsub ';', '<br>').html_safe %></p>
+    								<hr>
+  								</div>
+  							<% end %>
+  						<% end %>
+					<% end %>
+				</div>
+				<div class="tab-pane" id="twitterTab">...</div>
+			</div>
+		</div>		
+	</div>
+</div>
+
+
+<!-- This is just test code used with the positioning code -->
+<button type="button" id="location">Get Latitude</button>
+<p id="cLoc"> 0 </p>
+
+
+<script>
+//This just makes the Bar tab on the navbar to active
+var barMenu = document.getElementById("BarMenu");
+barMenu.className += " active";
+</script>
+
+
+<!-- All code below deals with finding the current location-->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3SN-tvewofza0qi6XqEMH2pyFX148Bm8&sensor=false">
+	//This is using Michaels google API key
+    </script>
+
+	
+<script type="text/javascript">
+	/*
+	This code does not seems to connect to google servers while inside the virtual box.
+	This is a hypothesis since the actual google map wont find location while in the virtual machine and
+	this code seems to work fine when ran in my (Joe) windows. Will further test and implement when
+	the code is running on the server!
+	
+	The goal is to use these coordinates to order the bars based on the current location
+	*/
+	var cbutton = document.getElementById("location");
+	cbutton.onclick = getLocation;
+	
+	// Handles displaying the map when the tab is clicked
+	// initialize every  time because otherwise fails to load after visiting other pages
+	$(function(){
+		$('a[href="#map"]').on('click', function(){ setTimeout(function(){initialize(); google.maps.event.trigger(map, 'resize'); map.panTo(new google.maps.LatLng(39.998394075812634, -83.00340414047241));}, 1)});
+
+	});
+
+	function getLocation()
+    {
+    	if (navigator.geolocation)
+    	{
+    		var options = {
+				timeout: 5000,
+    		    maximumAge: 0
+			};
+		console.log("test2");
+		//Keeps failing to connect, works outside of this enviorment, may test when server works.
+    	navigator.geolocation.getCurrentPosition( success, error,options);
+    	} else { 
+    		x.innerHTML= "Geolocation is not supported by this browser."; 
+    	}
+    }
+
+
+	function error(e) {
+		console.log("error code:" + e.code + 'message: ' + e.message );
+	}
+	function success(position) {
+		var  lat  = position.coords.latitude;
+	    var  lng =  position.coords.longitude;
+
+		//This is my portion
+		var locTextField = document.getElementById("cLoc");
+		locTextField.innerHTML = lat;
+		console.log(lat);
+		//--
+	}
+	
+	google.maps.event.addDomListener(window, 'load', getLocation() );
+	
+</script>

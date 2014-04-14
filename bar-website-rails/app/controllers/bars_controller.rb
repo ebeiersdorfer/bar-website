@@ -7,6 +7,14 @@ class BarsController < ApplicationController
     @bars = Bar.all
   end
 
+	def self.latitudes
+		lats = Array.new
+		Bar.all.each do |bar|
+			lats.push bar.latitude
+		end
+		lats
+	end
+
   # GET /bars/1
   # GET /bars/1.json
   def show
