@@ -12,27 +12,32 @@
       	<%= content_tag(:p, @bar.contact_number) %>
 			</div>
 		</div>
-		<div class="span8">	
+		<div class="span8 description">	
 
-		 <%= link_to("Follow @#{@bar.twitter_name}", "http://www.twitter.com/#{@bar.twitter_name}") %>
-	    <p>
-  	    <strong>Description:</strong>
+	    <h4>
     	  <%= @bar.description %>
-    	</p>
+    	</h4>
 		</div>
 	  <!-- This just iterates through all the daily deals related to this bar and prints them-->
     <% @bar.daily_deals.each do |deal| %>
       <div class="entry">
-        <h3><%= deal.day_of_the_week %></h3>
-        <p><%= (deal.deal.gsub ';', '<br>').html_safe %></p>
+				<hr>
+        <h2><%= deal.day_of_the_week %></h2>
+        <h5><%= (deal.deal.gsub ';', '<br>').html_safe %></h5>
       </div>
     <% end %>
 
-    <%= link_to 'Edit', edit_bar_path(@bar) %> |
-    <%= link_to 'Back', main_path %>
+		<div class="options">
+			<hr>
+    	<%= link_to 'Edit', edit_bar_path(@bar) %> |
+    	<%= link_to 'Back', main_path %>
+		</div>
   </div>
 	
-
+	<!-- Fixes problem of twitter widget not loading after first page. -->
+	<script>
+		twttr.widgets.load();
+	</script>
 
 	<div class="span4">
 		<div id="twitter-feed">

@@ -1,6 +1,14 @@
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3SN-tvewofza0qi6XqEMH2pyFX148Bm8&sensor=false"></script>
+
+<%= javascript_tag "var bar_names = #{@names};" %>
+<%= javascript_tag "var bar_lat = #{ @lats.to_json };" %>
+<%= javascript_tag "var bar_lon = #{@lons.to_json};" %>
+<%= javascript_tag "var bar_address = #{@addresses};" %>
+<%= javascript_tag "var bar_links = #{@links};" %>
+<%= javascript_include_tag 'barmap' %>
 
 <div class="row">
 	<!--The Left large box-->
@@ -8,6 +16,7 @@
 		<!--Gives characteristics of the box outline-->
 		<div>
 			<!-- Nav tabs -->
+			<p><%=  @names %></p>
 			<ul class="nav nav-tabs" style="background-color: #DDDDDD">
 				<li class="active"><a href="#list" data-toggle="tab">Bars</a></li>
 				<li><a href="#tiles" data-toggle="tab">Tiles</a></li>
@@ -37,7 +46,9 @@
 					<% end %>
 				</div>
 				<div class="tab-pane" id="tiles">...</div>
-				<div class="tab-pane" id="map">...</div>
+				<div class="tab-pane" id="map">
+					<div id="map-canvas" style="width:600px; height: 420px;"></div>
+				</div>
 			</div>
 		</div>		
 	</div>
@@ -103,6 +114,13 @@ barMenu.className += " active";
 	var cbutton = document.getElementById("location");
 	cbutton.onclick = getLocation;
 	
+	// Handles displaying the map when the tab is clicked
+	// initialize every  time because otherwise fails to load after visiting other pages
+	$(function(){
+		$('a[href="#map"]').on('click', function(){ setTimeout(function(){initialize(); google.maps.event.trigger(map, 'resize'); map.panTo(new google.maps.LatLng(39.998394075812634, -83.00340414047241));}, 1)});
+
+	});
+
 	function getLocation()
     {
     	if (navigator.geolocation)

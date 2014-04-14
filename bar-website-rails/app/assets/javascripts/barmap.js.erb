@@ -1,0 +1,70 @@
+//Arrays filled with bar info
+//var bar_names = ["The Big Bar and Grill", "Plaza", "Eddie Georges", "Fourth Street Bar and Grill", "The O Patio"];
+//var bar_lat = [39.997210535526904, 39.99589196360071, 39.995604274228924, 40.000352446766506, 40.0002013472187];
+//var bar_lon = [-83.00733089447021, -83.00708144903183, -83.00691783428192, -82.99852520227432, -83.00769567489624];
+//var bar_links = ["bars/bigbar.html","bars/plaza.html","bars/eddiegeorges.html","bars/fourthstreet.html","bars/theo.html"];
+//var bar_address = ["1716 N. High Street<br>Columbus, OH, 43201<br>(614) 294-1800", "1644 N High St<br>Columbus, OH 43201<br>614) 725-3044", "1636 North High Street<br>Columbus, OH 43201<br>(614) 421-2727", "1810 N. 4th Street<br>Columbus, OH, 43201<br>(614) 291-1420", "15th & High Street<br>Columbus, OH 43201<br>(614) 298-8000" ];
+
+// holds currently open infowindow from markers
+var openInfoWindow;
+var map;
+var mapOptions;
+
+// Used when on mobile devices. not fully implemented yet.
+function detectBrowser(){
+	var useragent = navigator.userAgent;
+	var mapdiv = document.getElementById("map-canvas");
+	
+	if (useragent.indexOf('iPhone') != -1 || useragent.indexOf('Android') != -1){
+		mapdiv.style.width = '100%';
+		mapdiv.style.height = '100%';
+	}else{
+		mapdiv.style.width = '600px';
+		mapdiv.style.height = '420px';
+	}
+	
+}
+function initialize(){
+	// set options for setting up the map
+	mapOptions = {
+		center: new google.maps.LatLng(39.998394075812634, -83.00340414047241),
+		zoom: 15,
+		mapTypeId: google.maps.MapTypeId.HYBRID
+	};
+	
+	// Used when gathering coordinates
+	//var par = document.getElementById("coords");
+	
+	map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);	
+	//google.maps.event.addDomListener(map, 'click', function(event){par.innerHTML = par.innerHTML + "\n" + event.latLng;});
+
+	// populate the map 
+	for (var i = 0; i < bar_names.length; i++){
+		var marker = new google.maps.Marker({
+		position: new google.maps.LatLng(bar_lat[i], bar_lon[i]),
+		map: map,
+		title: bar_names[i]
+		});
+		
+		// add click listener for this bar
+		addMarkerClick(map, marker, bar_names[i], bar_address[i], bar_links[i]);
+	}
+		
+}
+
+function addMarkerClick(map, marker, title, address, link){
+	// popup with more information about the marker
+	var infowindow = new google.maps.InfoWindow({
+			content: "<p width='200px'>" + title + 
+									"<br>" + address +
+									"<br><a href=\"bars/" + link + "\">Visit Page!</a>"
+									+ "</p>",
+			minWidth: 200
+			});
+	// set global variable so we know this is the currently active window
+	openInfoWindow = infowindow;
+	
+	// add click listener to marker
+	google.maps.event.addListener(marker, 'click', function(){openInfoWindow.close(); openInfoWindow = infowindow;infowindow.open(map, marker);});
+}
+

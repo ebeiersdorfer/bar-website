@@ -1,2 +1,26 @@
 // Place all the styles related to the Bars controller here.
 // They will automatically be included in application.css.
+
+body{
+	h1, p{
+		color: #5C5C5C;
+	}
+	h4{
+		color: #A8A8A8;
+	}	
+
+img{
+	padding: 2px;
+	border: 1px solid black;
+	box-shadow: 5px 5px 5px #5C5C5C;
+}
+}
+
+.options{
+	margin: 40px 0px;
+
+}
+
+.description{
+	margin: 15px;
+}
