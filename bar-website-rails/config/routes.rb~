@@ -1,4 +1,9 @@
 BarWebsiteRails::Application.routes.draw do
+<<<<<<< HEAD
+  devise_for :users
+  get "users" => "main/index"
+=======
+>>>>>>> b4a5dd6bb9ffff08db08234328fc9552486b1747
   get "calendar/index"
   get "main/index"
   resources :daily_deals

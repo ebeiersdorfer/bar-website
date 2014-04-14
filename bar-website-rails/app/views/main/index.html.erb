@@ -24,12 +24,13 @@
 			<div class="tab-content">
 				<!-- This is the list tabl-->
 				<div class="tab-pane active" id="list">
+					
 					<!-- This goes through the bar array (described and created in the controller and prints each Bar-->
 					<% if @bars.length > 0%>
 						<% @bars.each do |bar| %>
   							<div class="barBox">
   								<div class="barBoxContent">
-  									<h3><%= link_to bar.name, bar %></h3>
+  									<h3><%= link_to bar.name, bar %></h3> 									
   									<hr>
   									<br>
     								<p><%= (bar.address.sub ',', '<br>').html_safe %></p>
@@ -124,7 +125,11 @@
 	</div>
 </div>
 
-
+<% if session[:mobile_override]%>
+	<p>Mobile? Yup</p>
+<% else %>
+  	<p>Mobile? Nope</p>
+ <% end %>
 <!-- This is just test code used with the positioning code -->
 <button type="button" id="location">Get Latitude</button>
 <p id="cLoc"> 0 </p>

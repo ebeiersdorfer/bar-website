@@ -15,9 +15,12 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
+<<<<<<< HEAD
+=======
 # Use Devise for admin control
 gem 'devise'
 
+>>>>>>> b4a5dd6bb9ffff08db08234328fc9552486b1747
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
