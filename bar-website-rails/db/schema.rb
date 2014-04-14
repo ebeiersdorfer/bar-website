@@ -11,13 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20140414190209) do
+=======
 ActiveRecord::Schema.define(version: 20140414185058) do
+>>>>>>> b4a5dd6bb9ffff08db08234328fc9552486b1747
 
   create_table "bars", force: true do |t|
     t.integer  "bar_id"
     t.string   "name"
     t.string   "twitter_name"
-    t.string   "twitter_widget_id"
     t.string   "small_pic_url"
     t.string   "large_pic_url"
     t.string   "contact_number"
@@ -28,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140414185058) do
     t.decimal  "y_coordinate"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "twitter_widget_id"
   end
 
   create_table "daily_deals", force: true do |t|

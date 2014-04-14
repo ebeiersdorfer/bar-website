@@ -19,5 +19,5 @@ class ApplicationController < ActionController::Base
   end
   helper_method :mobile_device?
   
-  before_filter :check_for_mobile
+   before_filter :check_for_mobile, :only => [:new, :edit]
 end
