@@ -9,8 +9,87 @@ body {
 
 }
 
-h3 {
+.link:link { 
+  color: #FFFFFF;
+}
+.link:visited { 
+  color: #FFFFFF;
+}
+.link:hover { 
+  color: #FFFFFF;
+}
+.link:active { 
+  color: #FFFFFF;
+}
+
+h3,hr {
 	margin: 0px;
+}
+
+
+
+/* These deal with tiles */
+
+.barText {
+	padding: 0px;
+	margin: 0px;
+	color: #FFFFFF;
+	/*width: 225px;
+	height: 225px;*/
+	font-weight:bold;
+	font-size:16px;
+	top: -100px;
+	position: relative;
+	/*z-index:10;*/
+	text-align: center;
+	overflow:hidden;
+	opacity:0;
+}
+
+.barImage{
+	width: 150px;
+	height: 150px;
+	top: -1px;
+	left: -1px
+	position: relative;
+	overflow:hidden;
+	padding: 0px;
+	margin: 0px;
+	/*z-index:9;*/
+	-webkit-transform:scale(1.01); /*Webkit: Scale down image to 0.8x original size*/
+	-moz-transform:scale(1.01); /*Mozilla scale version*/
+	-o-transform:scale(1.01); /*Opera scale version*/
+	-webkit-transition-duration: 0.5s; /*Webkit: Animation duration*/
+	-moz-transition-duration: 0.5s; /*Mozilla duration version*/
+	-o-transition-duration: 0.5s; /*Opera duration version*/
+}
+
+.imgHovered{
+	-webkit-transform:scale(1.1); /*Webkit: Scale up image to 1.2x original size*/
+	-moz-transform:scale(1.1); /*Mozilla scale version*/
+	-o-transform:scale(1.1); /*Opera scale version*/
+	box-shadow:0px 0px 30px gray; /*CSS3 shadow: 30px blurred shadow all around image*/
+	-webkit-box-shadow:0px 0px 30px gray; /*Safari shadow version*/
+	-moz-box-shadow:0px 0px 30px gray; /*Mozilla shadow version*/
+}
+
+.barSquare {
+	
+    height: 150px;
+    width: 150px;
+    border-style:solid;
+    border-width: 1px;
+	border-color: #555555;
+    /*border-color: #293e6a;*/
+	/*border-radius:3px;*/
+    /*border-color: #293e6a;*/
+    background-color: #000000;
+    float: left;
+    margin:5px;
+    padding:0px;
+	box-shadow: 5px 5px 12px #888888;
+	overflow:hidden;
+	
 }
 
 .mainDiv{

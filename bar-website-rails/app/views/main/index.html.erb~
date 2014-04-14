@@ -1,6 +1,14 @@
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3SN-tvewofza0qi6XqEMH2pyFX148Bm8&sensor=false"></script>
+
+<%= javascript_tag "var bar_names = #{@names};" %>
+<%= javascript_tag "var bar_lat = #{ @lats.to_json };" %>
+<%= javascript_tag "var bar_lon = #{@lons.to_json};" %>
+<%= javascript_tag "var bar_address = #{@addresses};" %>
+<%= javascript_tag "var bar_links = #{@links};" %>
+<%= javascript_include_tag 'barmap' %>
 
 <div class="row">
 	<!--The Left large box-->
@@ -23,6 +31,7 @@
   								<div class="barBoxContent">
   									<h3><%= link_to bar.name, bar %></h3>
   									<hr>
+  									<br>
     								<p><%= (bar.address.sub ',', '<br>').html_safe %></p>
     							</div>
   							</div>
@@ -35,8 +44,52 @@
   						</div>
 					<% end %>
 				</div>
-				<div class="tab-pane" id="tiles">...</div>
-				<div class="tab-pane" id="map">...</div>
+				<div class="tab-pane" id="tiles">
+					<% @bars.each do |bar| %>			
+						<div class = "barSquare">
+							<%= image_tag(bar.small_pic_url, alt: bar.name + "image", class: "barImage") %>
+							<p class = "barText"> <%= link_to bar.name, bar%></p>
+						</div>
+					<% end %>	
+
+        			<script type="text/javascript">
+						//This script just adds effects to tiles
+						
+							//jquery that adds a little interaction once the page loads
+						$(document).ready(function() {
+							//This section is ment to add a little animation on page load.
+							/*			
+							$('.barSquare').animate(
+							{
+							opactiy: 1,
+							left: "-=10px"
+							}, 800);
+							*/
+			
+							//Deals with fading on hovering
+							$(document).on('mouseenter', '.barSquare', function () {
+								$("> img", this).stop();
+								$("> p", this).stop();
+								$("> img", this).fadeTo('fast', 0.5);
+								$("> img", this).addClass("imgHovered");
+								$("> p", this).fadeTo('slow', 1);
+							}).on('mouseleave', '.barSquare', function() { 
+								$("> img", this).stop();
+								$("> p", this).stop();
+								$("> img", this).fadeTo('fast', 1); 
+								$("> img", this).removeClass("imgHovered");
+								$("> p", this).fadeTo('slow', 0);
+							});
+						});
+        			</script>
+				</div>
+				<div class="tab-pane" id="map">
+					<div class="barBox">
+						<div class="barBoxContent">
+							<div id="map-canvas" style="width:600px; height: 420px;"></div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>		
 	</div>
@@ -102,6 +155,13 @@ barMenu.className += " active";
 	var cbutton = document.getElementById("location");
 	cbutton.onclick = getLocation;
 	
+	// Handles displaying the map when the tab is clicked
+	// initialize every  time because otherwise fails to load after visiting other pages
+	$(function(){
+		$('a[href="#map"]').on('click', function(){ setTimeout(function(){initialize(); google.maps.event.trigger(map, 'resize'); map.panTo(new google.maps.LatLng(39.998394075812634, -83.00340414047241));}, 1)});
+
+	});
+
 	function getLocation()
     {
     	if (navigator.geolocation)

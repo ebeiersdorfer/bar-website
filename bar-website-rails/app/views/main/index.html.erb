@@ -44,9 +44,51 @@
   						</div>
 					<% end %>
 				</div>
-				<div class="tab-pane" id="tiles">...</div>
+				<div class="tab-pane" id="tiles">
+					<% @bars.each do |bar| %>			
+						<div class = "barSquare">
+							<%= image_tag(bar.small_pic_url, alt: bar.name + "image", class: "barImage") %>
+							<p class = "barText"> <%= link_to bar.name, bar, class: "link"%></p>
+						</div>
+					<% end %>	
+
+        			<script type="text/javascript">
+						//This script just adds effects to tiles
+						
+							//jquery that adds a little interaction once the page loads
+						$(document).ready(function() {
+							//This section is ment to add a little animation on page load.
+							/*			
+							$('.barSquare').animate(
+							{
+							opactiy: 1,
+							left: "-=10px"
+							}, 800);
+							*/
+			
+							//Deals with fading on hovering
+							$(document).on('mouseenter', '.barSquare', function () {
+								$("> img", this).stop();
+								$("> p", this).stop();
+								$("> img", this).fadeTo('fast', 0.5);
+								$("> img", this).addClass("imgHovered");
+								$("> p", this).fadeTo('slow', 1);
+							}).on('mouseleave', '.barSquare', function() { 
+								$("> img", this).stop();
+								$("> p", this).stop();
+								$("> img", this).fadeTo('fast', 1); 
+								$("> img", this).removeClass("imgHovered");
+								$("> p", this).fadeTo('slow', 0);
+							});
+						});
+        			</script>
+				</div>
 				<div class="tab-pane" id="map">
-					<div id="map-canvas" style="width:600px; height: 420px;"></div>
+					<div class="barBox">
+						<div class="barBoxContent">
+							<div id="map-canvas" style="width:600px; height: 420px;"></div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>		
