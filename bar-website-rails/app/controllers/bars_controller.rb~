@@ -1,6 +1,7 @@
 
 class BarsController < ApplicationController
-  before_action :set_bar, only: [:show, :edit, :update, :destroy], (:authenticate_user!)
+  before_action :set_bar, only: [:show]
+before_action :authenticate_user!, only: [:edit, :update, :destroy]
   # GET /bars
   # GET /bars.json
   def index
