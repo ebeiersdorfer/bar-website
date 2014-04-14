@@ -4,9 +4,10 @@ body {
 }
 
 .body-background{
-	background-color:#EFEFEF;
-	
-
+	/*background-color:#EFEFEF;*/
+	background: url( 'background.jpg');
+	background-repeat:no-repeat;
+	background-attachment:fixed;
 }
 
 .link:link { 

@@ -4,8 +4,9 @@ body {
 }
 
 .body-background{
-	background-color:#EFEFEF;
-	
+	/*background-color:#EFEFEF;*/
+	background: url( 'background.jpg')
+	background-attachment:fixed;
 
 }
 
@@ -16,7 +17,9 @@ body {
   color: #FFFFFF;
 }
 .link:hover { 
+  background-color: transparent;
   color: #FFFFFF;
+  text-decoration: none;
 }
 .link:active { 
   color: #FFFFFF;
