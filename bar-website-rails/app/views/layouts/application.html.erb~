@@ -14,46 +14,31 @@
 	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
 	<script src="bootstrap.js”"> </script>
-<<<<<<< HEAD
-	
-	
-		<div class="navbar navbar-default navbar-fixed-top">
-			<div class="navbar-default">
-=======
+
 	<div class="container">
 		<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
 			<div class="navbar-inner">
->>>>>>> 2663addff9301b886029bdaa251a75cf52368e59
+
 				<div class="container">
 					<ul class="nav navbar-nav">
-						<li id="BarMenu"><%= link_to main_path do%>
-							<i class="icon-calendar icon-white"></i>
-						<% end %>
-						</li>
+						<li id="BarMenu"><%= link_to 'Bars', main_path%></li>
 						<li id="CalendarMenu"><%= link_to 'Calendar', calendar_index_path %></li>
 					</ul>  
-<<<<<<< HEAD
-<<<<<<< HEAD
+					<!--<center><a class="brand" href="./index.html">Locate Bars</a></center>-->
 					<ul class="nav navbar-nav pull-right">
-=======
-=======
-	<center><a class="brand" href="./index.html">Locate Bars</a></center>
->>>>>>> 2663addff9301b886029bdaa251a75cf52368e59
-					<ul class="nav pull-right">
->>>>>>> b4a5dd6bb9ffff08db08234328fc9552486b1747
-						<%=form_tag({controller: "/main", action: "index"}, method: "get", class: "navbar-search pull-right") do %>
+						<%=form_tag({controller: "/main", action: "index"}, method: "get", class: "navbar-search") do %>
 							<input type="text" class="search-query" placeholder="Bar Name" name="bar_search"> 
-<p class="navbar-text pull-right">
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-<!-- Remove sign up line -->
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
 						<% end %>
+						<% if user_signed_in? %> 
+							<li>Logged in as <strong><%= current_user.email %></strong>.</li>
+  							<li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> | </li>
+  							<li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %> </li>
+						<% else %>
+							<!-- Remove sign up line -->
+  							<li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> | </li>
+  							<li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %> </li>
+						<% end %> 
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -63,22 +48,13 @@
 				<!--<h1><%= link_to 'Bar Website!', main_path %></h1>-->
 			</div>
 		</div>
-		
-<<<<<<< HEAD
-	<% if notice %>
-  		<p class="alert alert-success"><%= notice %></p>
-	<% end %>
-	<% if alert %>
-  		<p class="alert alert-danger"><%= alert %></p>
-	<% end %>
-=======
+
 		<% if notice %>
   <p class="alert alert-success"><%= notice %></p>
 <% end %>
 <% if alert %>
   <p class="alert alert-danger"><%= alert %></p>
 <% end %>
->>>>>>> b4a5dd6bb9ffff08db08234328fc9552486b1747
 	<%= yield %>
 	
 	</div>
