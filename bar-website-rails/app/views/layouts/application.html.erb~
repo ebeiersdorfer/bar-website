@@ -21,24 +21,38 @@
 			<div class="navbar-default">
 =======
 	<div class="container">
-		<div class="navbar navbar-default navbar-fixed-top">
+		<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
 			<div class="navbar-inner">
->>>>>>> b4a5dd6bb9ffff08db08234328fc9552486b1747
+>>>>>>> 2663addff9301b886029bdaa251a75cf52368e59
 				<div class="container">
 					<ul class="nav navbar-nav">
 						<li id="BarMenu"><%= link_to main_path do%>
-							<i class="icon-calendar"></i>
+							<i class="icon-calendar icon-white"></i>
 						<% end %>
 						</li>
 						<li id="CalendarMenu"><%= link_to 'Calendar', calendar_index_path %></li>
 					</ul>  
 <<<<<<< HEAD
+<<<<<<< HEAD
 					<ul class="nav navbar-nav pull-right">
 =======
+=======
+	<center><a class="brand" href="./index.html">Locate Bars</a></center>
+>>>>>>> 2663addff9301b886029bdaa251a75cf52368e59
 					<ul class="nav pull-right">
 >>>>>>> b4a5dd6bb9ffff08db08234328fc9552486b1747
 						<%=form_tag({controller: "/main", action: "index"}, method: "get", class: "navbar-search pull-right") do %>
 							<input type="text" class="search-query" placeholder="Bar Name" name="bar_search"> 
+<p class="navbar-text pull-right">
+<% if user_signed_in? %>
+  Logged in as <strong><%= current_user.email %></strong>.
+  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+<% else %>
+<!-- Remove sign up line -->
+  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+<% end %>
 						<% end %>
 				</div>
 			</div>
