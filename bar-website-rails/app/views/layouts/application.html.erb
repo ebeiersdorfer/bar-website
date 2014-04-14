@@ -15,13 +15,14 @@
 	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
 	<script src="bootstrap.js”"> </script>
 	<div class="container">
-		<div class="navbar navbar-default navbar-fixed-top">
+		<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container">
 					<ul class="nav">
 						<li id="BarMenu"><%= link_to 'Bars', main_path %></li>
 						<li id="CalendarMenu"><%= link_to 'Calendar', calendar_index_path %></li>
 					</ul>  
+	<center><a class="brand" href="./index.html">Locate Bars</a></center>
 					<ul class="nav pull-right">
 						<%=form_tag({controller: "/main", action: "index"}, method: "get", class: "navbar-search pull-right") do %>
 							<input type="text" class="search-query" placeholder="Bar Name" name="bar_search"> 
@@ -31,6 +32,7 @@
   <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
   <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
 <% else %>
+<!-- Remove sign up line -->
   <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
   <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
 <% end %>
