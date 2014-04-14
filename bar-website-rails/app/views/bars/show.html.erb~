@@ -1,70 +1,49 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Bar:</strong>
-  <%= @bar.bar_id %>
-</p>
+<div class="row">
+	<div class="span8">
+		<div class="row">
+			<div class="span4">
+				<%= image_tag(@bar.small_pic_url, :alt => @bar.name + "image") %>
+			</div>
+			<div class="span4">
+				<%= content_tag(:h1, @bar.name) %>
+      	<%= content_tag(:p, @bar.address) %>
+      	<%= content_tag(:p, @bar.contact_number) %>
+			</div>
+		</div>
+		<div class="span8 description">	
 
-<p>
-  <strong>Name:</strong>
-  <%= @bar.name %>
-</p>
+	    <h4>
+    	  <%= @bar.description %>
+    	</h4>
+		</div>
+	  <!-- This just iterates through all the daily deals related to this bar and prints them-->
+    <% @bar.daily_deals.each do |deal| %>
+      <div class="entry">
+				<hr>
+        <h2><%= deal.day_of_the_week %></h2>
+        <h5><%= (deal.deal.gsub ';', '<br>').html_safe %></h5>
+      </div>
+    <% end %>
 
-<p>
-  <strong>Twitter name:</strong>
-  <%= @bar.twitter_name %>
-</p>
-
-<p>
-  <strong>Small pic url:</strong>
-  <%= @bar.small_pic_url %>
-</p>
-
-<p>
-  <strong>Large pic url:</strong>
-  <%= @bar.large_pic_url %>
-</p>
-
-<p>
-  <strong>Contact number:</strong>
-  <%= @bar.contact_number %>
-</p>
-
-<p>
-  <strong>Hours:</strong>
-  <%= @bar.hours %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @bar.address %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @bar.description %>
-</p>
-
-<p>
-  <strong>X coordinate:</strong>
-  <%= @bar.x_coordinate %>
-</p>
-
-<p>
-  <strong>Y coordinate:</strong>
-  <%= @bar.y_coordinate %>
-</p>
-
-<hr>
-
-<% @bar.daily_deals.each do |deal| %>
-  <div class="entry">
-    <h3><%= deal.day_of_the_week %></h3>
-    <p><%= (deal.deal.gsub ';', '<br>').html_safe %></p>
+		<div class="options">
+			<hr>
+    	<%= link_to 'Edit', edit_bar_path(@bar) %> |
+    	<%= link_to 'Back', main_path %>
+		</div>
   </div>
-<% end %>
+	
+	<!-- Fixes problem of twitter widget not loading after first page. -->
+	<script>
+		twttr.widgets.load();
+	</script>
 
+	<div class="span4">
+		<div id="twitter-feed">
+			<a class="twitter-timeline" href=<%= "https://twitter.com/?q=from:ChumleysOSU+OR+from:ToosUnderHigh" %> data-widget-id=<%= @bar.twitter_widget_id %>><%= "Tweets by @#{@bar.twitter_name}" %></a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</div>
+	</div>
 
-
-<%= link_to 'Edit', edit_bar_path(@bar) %> |
-<%= link_to 'Back', main_path %>
+</div>

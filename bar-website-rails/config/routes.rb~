@@ -1,8 +1,13 @@
 BarWebsiteRails::Application.routes.draw do
+  devise_for :users
+  get "users" => "main/index"
+  get "calendar/index"
   get "main/index"
   resources :daily_deals
 
   resources :bars
+  
+  root to: 'main#index', as: 'main'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

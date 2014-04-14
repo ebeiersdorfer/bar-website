@@ -9,6 +9,7 @@ body {
 
 }
 
+
 .link:link { 
   color: #FFFFFF;
 }
@@ -16,7 +17,9 @@ body {
   color: #FFFFFF;
 }
 .link:hover { 
+  background-color: transparent;
   color: #FFFFFF;
+  text-decoration: none;
 }
 .link:active { 
   color: #FFFFFF;
@@ -152,11 +155,8 @@ h3,hr {
 }
 
 
-/* CSS to ensure sidebar and content are same height (optional) */
+/* CSS to ensure sidebar and content arhttp://flip.hr/css/bootstrap.min.csse same height (optional) */
 
-html, body {
-    height: 100%;
-}
 
 .fill { 
     min-height: 100%;
@@ -176,4 +176,51 @@ html, body {
     top: 0;
     width: inherit;
     z-index: -1;  
+}
+
+.navbar-default {
+	background-color: #000000;
+	border-color: #808080;
+}
+.navbar-default .navbar-brand {
+	color: #c0c0c0;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+	color: #ffffff;
+}
+.navbar-default .navbar-text {
+	color: #c0c0c0;
+}
+.navbar-default .navbar-nav > li > a {
+	color: #c0c0c0;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+	color: #ffffff;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+	color: #ffffff;
+	background-color: #808080;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+	color: #ffffff;
+	background-color: #808080;
+}
+.navbar-default .navbar-toggle {
+	border-color: #808080;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+	background-color: #808080;
+}
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #c0c0c0;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+	border-color: #c0c0c0;
+}
+.navbar-default .navbar-link {
+	color: #c0c0c0;
+}
+.navbar-default .navbar-link:hover {
+	color: #ffffff;
 }
