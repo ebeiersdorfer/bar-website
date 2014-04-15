@@ -245,16 +245,6 @@ DailyDeal.create(
 	day_of_the_week: 'Sunday',
 	deal: '$10 Yuengling Bucket;$12 Domestic Bucket;$18 Domestic Bucket;$18 Seasonal Bucket;$3 Bloodys & Screwdrivers;$3 Jagermeister, Fireball, Rumple Minze, & Goldschlager')
 
-# Toos
-DailyDeal.create(
-  bar_id: 2,
-  day_of_the_week: 'Tuesday',
-  deal: '$5 cover gets you $2 everything!')
-
-DailyDeal.create(
-  bar_id: 2,
-  day_of_the_week: 'Thursday',
-  deal: '$2 domestic 40s!')
 #4th street
 DailyDeal.create(
   bar_id: 3,
@@ -585,16 +575,6 @@ DailyDeal.create(
   deal: 'House Liquor	$ 1.00;GUINNESS, & BLUE MOON	$ 2.75/ pint;All others Drafts	$ 0.99;SORRY, NO HAPPY HOUR PRICING FOR OSU HOME GAMES!')
 
 
-<<<<<<< HEAD
-DailyDeal.create(
-	bar_id: 9,
-	day_of_the_week: 'Friday',
-	deal: 'Flashback Friday:;--$2 Wells;--$2 Miller Lite Bottles;--$2 Coors Light Bottles;--$2 Drafts;Daily Features:;--$2 Pinnicale Vodkas, Rums, Jim Beams;--$3 Miller Lite / Coors Light Pounders;--$3 Miller Lite / Coors Light Drafts')
-
-DailyDeal.create(
-	bar_id: 9,
-	day_of_the_week: 'Saturday',
-	deal: 'Saturday:;--$3 Miller Lite / Coors Light Pounders;--$3 Miller Lite / Coors Light Drafts')
 
 #toos
 DailyDeal.create(
@@ -622,8 +602,6 @@ DailyDeal.create(
 	day_of_the_week: 'Saturday',
 	deal: 'Power Hour 7:00 - 9:00:;--$1 Almost Everything;--$2 Top Shelf')
 	
-=======
->>>>>>> b40f66e50eab1c7d38725c215eda7ccd12032436
 User.delete_all
 User.create(
 	email: 'admin@aol.com',
