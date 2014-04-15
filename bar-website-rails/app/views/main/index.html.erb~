@@ -1,7 +1,6 @@
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3SN-tvewofza0qi6XqEMH2pyFX148Bm8&sensor=false"></script>
 
 <%= javascript_tag "var bar_names = #{@names};" %>
 <%= javascript_tag "var bar_lat = #{ @lats.to_json };" %>
@@ -27,16 +26,7 @@
 					
 					<!-- This goes through the bar array (described and created in the controller and prints each Bar-->
 					<% if @bars.length > 0%>
-						<% @bars.each do |bar| %>
-  							<div class="barBox">
-  								<div class="barBoxContent">
-  									<h3><%= link_to bar.name, bar %></h3> 									
-  									<hr>
-  									<br>
-    								<p><%= (bar.address.sub ',', '<br>').html_safe %></p>
-    							</div>
-  							</div>
-						<% end %>
+						
 					<!-- Runs if no bars are in the array (Should only occur when no matches for search) -->
 					<% else %>
 						<div class="entry">
@@ -48,7 +38,7 @@
 				<div class="tab-pane" id="tiles">
 					<% @bars.each do |bar| %>			
 						<div class = "barSquare">
-							<%= image_tag(bar.small_pic_url, alt: bar.name + "image", class: "barImage") %>
+							<%= link_to image_tag(bar.small_pic_url, alt: bar.name + "image", class: "barImage"), bar %>
 							<p class = "barText"> <%= link_to bar.name, bar, class: "link"%></p>
 						</div>
 					<% end %>	
@@ -69,16 +59,16 @@
 			
 							//Deals with fading on hovering
 							$(document).on('mouseenter', '.barSquare', function () {
-								$("> img", this).stop();
+								$("> a", this).stop();
 								$("> p", this).stop();
-								$("> img", this).fadeTo('fast', 0.5);
-								$("> img", this).addClass("imgHovered");
+								$("> a", this).fadeTo('fast', 0.5);
+								$("> a > img", this).addClass("imgHovered");
 								$("> p", this).fadeTo('slow', 1);
 							}).on('mouseleave', '.barSquare', function() { 
-								$("> img", this).stop();
+								$("> a", this).stop();
 								$("> p", this).stop();
-								$("> img", this).fadeTo('fast', 1); 
-								$("> img", this).removeClass("imgHovered");
+								$("> a", this).fadeTo('fast', 1); 
+								$("> a > img", this).removeClass("imgHovered");
 								$("> p", this).fadeTo('slow', 0);
 							});
 						});
@@ -96,7 +86,7 @@
 	</div>
 	<!-- This is the right box-->
 	<div class="span4">
-		<div class = "box">
+		<div class = "">
 			<!-- Nav tabs -->
 			<ul class="nav nav-tabs" style="background-color: #DDDDDD">
 				<li class="active"><a href="#dealTab" data-toggle="tab">Today's Deals</a></li>
@@ -105,34 +95,34 @@
 			<!-- This is the todays deals tab-->
 			<div class="tab-content">
 				<div class="tab-pane active" id="dealTab">
-					<h3>Todays deals:</h3>
+					<div class="barBox">
+					<h3 style="text-align:center; margin:0px;">Todays deals:</h3>
 					<!-- This code searches all bars in the array and traverses their deals and prints each deal that corresponds with current day of the week-->
 					<% @bars.each do |bar| %>
 						<% bar.daily_deals.each do |deal| %>
 							<% if deal.day_of_the_week == Time.now.strftime("%A") %>
-  								<div class="entry">
-    								<h4><%= bar.name %></h4>
-    								<p><%= (deal.deal.gsub ';', '<br>').html_safe %></p>
-    								<hr>
+  								<div class="barBoxContent">
+  									<hr style="margin: 0px; padding: 0px;">
+    								<h4 style="margin: 2px ; padding-top: 0px; padding-bottom: 0px;"><%= bar.name %></h4>
+    								<p style="margin:0px; padding-bottom:0px"><%= (deal.deal.gsub ';', '<br>').html_safe %></p>
   								</div>
   							<% end %>
   						<% end %>
 					<% end %>
+					</div>
 				</div>
-				<div class="tab-pane" id="twitterTab">...</div>
+				<div class="tab-pane" id="twitterTab">
+					<!-- Fixes problem of twitter widget not loading after first page. -->
+          <script>
+            twttr.widgets.load();
+          </script>
+          <a class="twitter-timeline" href="https://twitter.com/mikeWzoller/bars" data-widget-id="455750764799856640">Tweets from Columbus Bars</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				</div>
 			</div>
 		</div>		
 	</div>
 </div>
-
-<% if session[:mobile_override]%>
-	<p>Mobile? Yup</p>
-<% else %>
-  	<p>Mobile? Nope</p>
- <% end %>
-<!-- This is just test code used with the positioning code -->
-<button type="button" id="location">Get Latitude</button>
-<p id="cLoc"> 0 </p>
 
 
 <script>
@@ -149,16 +139,25 @@ barMenu.className += " active";
 
 	
 <script type="text/javascript">
-	/*
-	This code does not seems to connect to google servers while inside the virtual box.
-	This is a hypothesis since the actual google map wont find location while in the virtual machine and
-	this code seems to work fine when ran in my (Joe) windows. Will further test and implement when
-	the code is running on the server!
 	
-	The goal is to use these coordinates to order the bars based on the current location
-	*/
-	var cbutton = document.getElementById("location");
-	cbutton.onclick = getLocation;
+	function Bar(bar_id, name, bar_link, x_coordinate, y_coordinate, address)
+        {
+            this.name = name; //the specific meeting number for that entry
+            this.bar_id = bar_id; //takes a date object and stores as the date for the entry
+            this.bar_link = bar_link; //stores the text for the topic of that date of the entry
+            this.x_coordinate = x_coordinate;
+            this.y_coordinate = y_coordinate;
+            this.address = address;
+        }
+        
+        var barList = [];
+	<% if @bars.length > 0%>
+		<% @bars.each do |bar| %>
+  			barList.push(new Bar(<%= bar.bar_id%>, '<%= escape_javascript bar.name%>', '<%= link_to bar.name, bar %>', <%= bar.x_coordinate%>, <%= bar.y_coordinate%> , '<%= escape_javascript (bar.address.sub ',', '<br>').html_safe %>'));
+		<% end %>
+	<% end %>
+
+
 	
 	// Handles displaying the map when the tab is clicked
 	// initialize every  time because otherwise fails to load after visiting other pages
@@ -172,7 +171,7 @@ barMenu.className += " active";
     	if (navigator.geolocation)
     	{
     		var options = {
-				timeout: 5000,
+				timeout: 2000,
     		    maximumAge: 0
 			};
 		console.log("test2");
@@ -180,24 +179,64 @@ barMenu.className += " active";
     	navigator.geolocation.getCurrentPosition( success, error,options);
     	} else { 
     		x.innerHTML= "Geolocation is not supported by this browser."; 
+    		addBarsToPage();
     	}
     }
 
-
+	var lat = 0;
+	var lng = 0;
 	function error(e) {
 		console.log("error code:" + e.code + 'message: ' + e.message );
+		addBarsToPage();
 	}
 	function success(position) {
-		var  lat  = position.coords.latitude;
-	    var  lng =  position.coords.longitude;
+		lat  = position.coords.latitude;
+	    lng =  position.coords.longitude;
 
-		//This is my portion
-		var locTextField = document.getElementById("cLoc");
-		locTextField.innerHTML = lat;
-		console.log(lat);
+		sortBars();
 		//--
+		
+		addBarsToPage();
+		
 	}
 	
 	google.maps.event.addDomListener(window, 'load', getLocation() );
+	
+	
+	function barSort(a,b) {
+		return Math.sqrt(Math.pow((Math.abs(lat) - Math.abs(a.x_coordinate)),2)+Math.pow((Math.abs(lng) - Math.abs(a.y_coordinate)),2)) - Math.sqrt(Math.pow((Math.abs(lat) - Math.abs(b.x_coordinate)),2)+Math.pow((Math.abs(lng) - Math.abs(b.y_coordinate)),2));
+	}
+	
+	function sortBars() {
+		if (barList.length > 1)
+		{
+			barList.sort(barSort)
+		}
+	}
+
+
+	function addBarsToPage() {
+			var barPage = document.getElementById("list");
+			console.log(barList.length);
+            for (var index = 0; index < barList.length; index++) {
+                var barBox = document.createElement('div');				
+                var barBoxContent = document.createElement('div');
+				var barBoxName = document.createElement('h3');
+				var barLink = document.createElement('a');
+				var hr = document.createElement('hr');
+				var br = document.createElement('br');
+				var barBoxAddr = document.createElement('p');
+				barBoxName.innerHTML = barList[index].bar_link;
+				barBoxAddr.innerHTML = barList[index].address;
+				barBox.className = "barBox";
+				barBoxContent.className = "barBoxContent";
+                barBoxContent.appendChild(barBoxName);
+                barBoxContent.appendChild(hr);
+                barBoxContent.appendChild(br);
+                barBoxContent.appendChild(barBoxAddr);
+				barBox.appendChild(barBoxContent);
+                barPage.appendChild(barBox);
+            }
+	}
 	
 </script>

@@ -1,12 +1,8 @@
 
 class BarsController < ApplicationController
-<<<<<<< HEAD
-  before_action :set_bar, only: [:show, :edit, :update, :destroy]
+  before_action :set_bar, only: [:show, :update, :destroy]
  #before_action :authenticate_user!, only: [:edit, :update, :destroy]
-=======
-  before_action :set_bar, only: [:show]
- before_action :authenticate_user!, only: [:edit, :update, :destroy]
->>>>>>> c6a983b6bcce27dfcf4e1a95dbfce866e9f340e5
+before_action :authenticate_user!, :except => [:index, :show]
   # GET /bars
   # GET /bars.json
   def index
