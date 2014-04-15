@@ -179,7 +179,6 @@ barMenu.className += " active";
     	navigator.geolocation.getCurrentPosition( success, error,options);
     	} else { 
     		x.innerHTML= "Geolocation is not supported by this browser."; 
-    		addBarsToPage();
     	}
     }
 
@@ -187,7 +186,6 @@ barMenu.className += " active";
 	var lng = 0;
 	function error(e) {
 		console.log("error code:" + e.code + 'message: ' + e.message );
-		addBarsToPage();
 	}
 	function success(position) {
 		lat  = position.coords.latitude;
@@ -238,5 +236,7 @@ barMenu.className += " active";
                 barPage.appendChild(barBox);
             }
 	}
+	
+	setTimeout(function(){alert("Hello")},3000);
 	
 </script>
