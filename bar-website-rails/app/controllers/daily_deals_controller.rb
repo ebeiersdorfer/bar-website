@@ -1,5 +1,9 @@
 class DailyDealsController < ApplicationController
-  before_action :set_daily_deal, only: [:show, :edit, :update, :destroy]
+  before_action :set_daily_deal, only: [:show]
+  #before_action :authenticate_user!, only: [:edit, :update, :destroy]
+before_action :authenticate_user!, :except => [:index, :show]
+
+
 
   # GET /daily_deals
   # GET /daily_deals.json
