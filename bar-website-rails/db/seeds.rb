@@ -244,7 +244,44 @@ DailyDeal.create(
 	bar_id: 1,
 	day_of_the_week: 'Sunday',
 	deal: '$10 Yuengling Bucket;$12 Domestic Bucket;$18 Domestic Bucket;$18 Seasonal Bucket;$3 Bloodys & Screwdrivers;$3 Jagermeister, Fireball, Rumple Minze, & Goldschlager')
-	
+
+# Toos
+DailyDeal.create(
+  bar_id: 2,
+  day_of_the_week: 'Tuesday',
+  deal: '$5 cover gets you $2 everything!')
+
+DailyDeal.create(
+  bar_id: 2,
+  day_of_the_week: 'Thursday',
+  deal: '$2 domestic 40s!')
+#4th street
+DailyDeal.create(
+  bar_id: 3,
+  day_of_the_week: 'Monday',
+  deal: 'Happy Hour 3-7: 1/2 Off all drinks!;Trivia Night!')
+
+DailyDeal.create(
+  bar_id: 3,
+  day_of_the_week: 'Tuesday',
+  deal: 'Happy Hour 3-7: 1/2 Off all drinks!;1/2 of drinks all night!')
+
+DailyDeal.create(
+  bar_id: 3,
+  day_of_the_week: 'Wednesday',
+  deal: 'Happy Hour 3-7: 1/2 Off all drinks!;Karaoke Night!')
+
+DailyDeal.create(
+  bar_id: 3,
+  day_of_the_week: 'Thursday',
+  deal: 'Happy Hour 3-7: 1/2 Off all drinks!;1/2 off well drinks all night!')
+
+DailyDeal.create(
+  bar_id: 3,
+  day_of_the_week: 'Friday',
+  deal: 'Happy Hour 3-7: 1/2 Off all drinks!')
+
+
 #Eddie real
 DailyDeal.create(
 	bar_id: 4,
@@ -276,6 +313,18 @@ DailyDeal.create(
 	day_of_the_week: 'Sunday',
 	deal: 'Bloody Mary Bar')
 	
+# Ugly Tuna
+DailyDeal.create(
+  bar_id: 5,
+  day_of_the_week: 'Monday',
+  deal: '$2 Bud family drafts all night long;$2 Tuna bombs!')
+
+DailyDeal.create(
+  bar_id: 5,
+  day_of_the_week: 'Tuesday',
+  deal: '4-8pm all draft beers $2 off.;8-10pm Natty Drafts $1 each!;10pm-close Bud Light drafts 50 cents!')
+
+
 #Ethyl & Tank real
 DailyDeal.create(
 	bar_id: 6,
@@ -359,7 +408,69 @@ DailyDeal.create(
 	day_of_the_week: 'Saturday',
 	deal: 'Daily Features:;--$3 Miller Lite / Coors Light Pounders;--$3 Miller Lite / Coors Light Drafts')
 
-	
+# Little bar
+DailyDeal.create(
+  bar_id: 9,
+  day_of_the_week: 'Sunday',
+  deal: '$6 Miller Light Coors Light Pitchers, $3 Miller Light Coors Light Pounders, $3 Miller Light Coors Light Drafts')
+DailyDeal.create(
+  bar_id: 9,
+  day_of_the_week: 'Monday',
+  deal: '$2 Pinnacle Vodkas, Rum Drinks, Jim Beam, $3 Miller Light Coors Light Pounders, $3 Miller Light Coors Light Drafts!')
+DailyDeal.create(
+  bar_id: 9,
+  day_of_the_week: 'Tuesday',
+  deal: 'Ladies Night--$2 Long Islands, Long Beaches, Amaretto Sour, Sex on the Beaches, Cosmos, $1.50 Miller Light Coors Light Draft')
+DailyDeal.create(
+  bar_id: 9,
+  day_of_the_week: 'Wednesday',
+  deal: '$2 Pinnacle Vodkas, Rum Drinks, Jim Beam, $3 Miller Light Coors Light Pounders, $3 Miller Light Coors Light Drafts!')
+DailyDeal.create(
+  bar_id: 9,
+  day_of_the_week: 'Thursday',
+  deal: '$3 Miller Light Coors Light Mugs, $4 Craft and Import Mugs, $1.50 Miller Light Coors Light Drafts, $2.50 Craft and Import Drafts!')
+DailyDeal.create(
+  bar_id: 9,
+  day_of_the_week: 'Friday',
+  deal: 'Little Beers Only $1, $3 Miller Light Coors Light Pounders, $3 Miller Light Coors Light Drafts, $1.50 12oz Cans of: Miller Lite, Coors Original, Black Label, PBR, and Stroh\'s.')
+DailyDeal.create(
+  bar_id: 9,
+  day_of_the_week: 'Saturday',
+  deal: '$3 Miller Light Coors Light Pounders, $3 Miller Light Coors Light Drafts')
+
+# out r inn
+DailyDeal.create(
+  bar_id: 10,
+  day_of_the_week: 'Monday',
+  deal: 'MUG NIGHT $3.50 for Mug. $1.75 refills on bud, bud lt., and miller. $1.25 natty fills')
+
+DailyDeal.create(
+  bar_id: 10,
+  day_of_the_week: 'Tuesday',
+  deal: '$3.00 pitchers FREE POOL')
+
+DailyDeal.create(
+  bar_id: 10,
+  day_of_the_week: 'Wednesday',
+  deal: '$2.75 labatt blue tall boy cans FREE POOL')
+
+DailyDeal.create(
+  bar_id: 10,
+  day_of_the_week: 'Thursday',
+  deal: '$2.75 20 oz tropical teas')
+
+DailyDeal.create(
+  bar_id: 10,
+  day_of_the_week: 'Fridday',
+  deal: '$3.25 Cherry Bombs and $1.00 Buckeye Shots')
+
+#Varsity club
+DailyDeal.create(
+  bar_id: 12,
+  day_of_the_week: 'Monday',
+  deal: 'Come in today to see our weekly specials!')
+
+
 #OPatio
 DailyDeal.create(
 	bar_id: 13,
@@ -425,7 +536,54 @@ DailyDeal.create(
 	bar_id: 11,
 	day_of_the_week: 'Saturday',
 	deal: 'Happy Hour 4-9:;--$16 62 oz Pitcher Flavor Margarita;--$6 Jumbo Lime Margarita;10pm-12pm: Nightly Deals')	
+
+#Thirsty scholar
+	DailyDeal.create(
+  bar_id: 14,
+  day_of_the_week: 'Monday',
+  deal: 'Karaoke Night!')
+
+DailyDeal.create(
+  bar_id: 14,
+  day_of_the_week: 'Thursday',
+  deal: 'All you can drink! $10 for domestics, $14 for imports and domestics!')
+DailyDeal.create(
+  bar_id: 14,
+  day_of_the_week: 'Saturday',
+  deal: 'All you can drink! $10 for domestics, $14 for imports and domestics!')
 	
+# Library
+DailyDeal.create(
+  bar_id: 15,
+  day_of_the_week: 'Sunday',
+  deal: 'House Liquor until 9:00 pm.	$ 1.00;PABST BLUE RIBBON 16 oz beer of the week. open - close')
+
+DailyDeal.create(
+  bar_id: 15,
+  day_of_the_week: 'Monday',
+  deal: 'House Liquor	$ 1.00;PBR & Natural Light Pitcher	$ 3.75')
+DailyDeal.create(
+  bar_id: 15,
+  day_of_the_week: 'Tuesday',
+  deal: 'House Liquor	$ 1.00;Miller High Life, PBR & BUSCH Bottles	$ 1.50;Bud, Bud Light & Miller Lite Pitchers	$ 5.00')
+DailyDeal.create(
+  bar_id: 15,
+  day_of_the_week: 'Wednesday',
+  deal: 'Bottled beer	$ .50 off;House Liquor	$ 1.00;Call Liquor	$ .50 off;All pitchers............ (MUG NIGHT AFTER 9:00 PM)	$ 1.00 off')
+DailyDeal.create(
+  bar_id: 15,
+  day_of_the_week: 'Thursday',
+  deal: 'House Liquor	$ 1.00;Bud, Bud Light & Miller Lite Pitchers	$ 5.00;Busch, PBR & Miller High Life Bottle	$ 1.50')
+DailyDeal.create(
+  bar_id: 15,
+  day_of_the_week: 'Friday',
+  deal: 'House Liquor	$ 1.00;PBR & Natural Light Pitchers	$4.25')
+DailyDeal.create(
+  bar_id: 15,
+  day_of_the_week: 'Saturday',
+  deal: 'House Liquor	$ 1.00;GUINNESS, & BLUE MOON	$ 2.75/ pint;All others Drafts	$ 0.99;SORRY, NO HAPPY HOUR PRICING FOR OSU HOME GAMES!')
+
+
 User.delete_all
 User.create(
 	email: 'admin@aol.com',
