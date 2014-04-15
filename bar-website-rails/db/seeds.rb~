@@ -342,17 +342,23 @@ DailyDeal.create(
 DailyDeal.create(
 	bar_id: 8,
 	day_of_the_week: 'Wednesday',
-	deal: 'Happy Hour 5-9: $2 Drafts and Wells')
+	deal: 'Happy Hour 4-9:;--$2 Wells;--$2 Miller Lite Bottles;--$2 Coors Light Bottles;--$2 Drafts;Daily Features:;--$3 Miller Lite / Coors Light Mugs;--$4 Craft and Import Mugs;--$1.50 Miller Lite / Coors Light Drafts;--$2.50 Craft and Import Drafts')
 
 DailyDeal.create(
 	bar_id: 8,
 	day_of_the_week: 'Thursday',
-	deal: 'Happy Hour 5-9: $2 Drafts and Wells')
-	
+	deal: 'Happy Hour 4-9:;--$2 Wells;--$2 Miller Lite Bottles;--$2 Coors Light Bottles;--$2 Drafts;Ladies Night:;--$2 Longs Islands, Long Beaches, Amaretto Sour, Sex on the Beach, Cosmos;--$1.50 Miller Lite / Coors Light Drafts')
+
 DailyDeal.create(
 	bar_id: 8,
 	day_of_the_week: 'Friday',
-	deal: 'Happy Hour 5-9: $2 Drafts and Wells')
+	deal: 'Happy Hour 4-9:;--$2 Wells;--$2 Miller Lite Bottles;--$2 Coors Light Bottles;--$2 Drafts;Daily Features:;--$2 Pinnicale Vodkas, Rums, Jim Beams;--$3 Miller Lite / Coors Light Pounders;--$3 Miller Lite / Coors Light Drafts')
+
+DailyDeal.create(
+	bar_id: 8,
+	day_of_the_week: 'Saturday',
+	deal: 'Daily Features:;--$3 Miller Lite / Coors Light Pounders;--$3 Miller Lite / Coors Light Drafts')
+
 	
 #OPatio
 DailyDeal.create(
@@ -390,6 +396,7 @@ DailyDeal.create(
 	day_of_the_week: 'Sunday',
 	deal: '$5 32oz Reds and Blue Moon')
 
+#plaza
 DailyDeal.create(
 	bar_id: 11,
 	day_of_the_week: 'Monday',
@@ -420,26 +427,103 @@ DailyDeal.create(
 	day_of_the_week: 'Saturday',
 	deal: 'Happy Hour 4-9:;--$16 62 oz Pitcher Flavor Margarita;--$6 Jumbo Lime Margarita;10pm-12pm: Nightly Deals')
 
+#library	
 DailyDeal.create(
-	bar_id: 8,
+	bar_id: 15,
+	day_of_the_week: 'Sunday',
+	deal: 'Happy Hour Until 9:;--$1 House Liqour;--$1.50 PBR')
+
+DailyDeal.create(
+	bar_id: 15,
+	day_of_the_week: 'Monday',
+	deal: 'Happy Hour Until 9:;--$1 House Liqour;--$3.75 PBR and Natural Light Pitcher')
+
+DailyDeal.create(
+	bar_id: 15,
+	day_of_the_week: 'Tuesday',
+	deal: 'Happy Hour Until 9:;--$1 House Liqour;--$1.50 Miller High Life, PBD, and Busch Bottles;--$5.00 Budweiser, Bud Light and Miller Lite Pitchers')
+
+DailyDeal.create(
+	bar_id: 15,
 	day_of_the_week: 'Wednesday',
-	deal: 'Happy Hour 4-9:;--$2 Wells;--$2 Miller Lite Bottles;--$2 Coors Light Bottles;--$2 Drafts;Daily Features:;--$3 Miller Lite / Coors Light Mugs;--$4 Craft and Import Mugs;--$1.50 Miller Lite / Coors Light Drafts;--$2.50 Craft and Import Drafts')
+	deal: 'Happy Hour Until 9:;--$.50 Off Bottled Beer;--$1 House Liquor;--$.50 Call Liquor;Mug Night After 9:00PM;--$1 Off Pitchers')
 
 DailyDeal.create(
-	bar_id: 8,
+	bar_id: 15,
 	day_of_the_week: 'Thursday',
-	deal: 'Happy Hour 4-9:;--$2 Wells;--$2 Miller Lite Bottles;--$2 Coors Light Bottles;--$2 Drafts;Ladies Night:;--$2 Longs Islands, Long Beaches, Amaretto Sour, Sex on the Beach, Cosmos;--$1.50 Miller Lite / Coors Light Drafts')
+	deal: 'Hour Until 9:;--$1 House Liqour;--$1.50 Miller High Life, PBD, and Busch Bottles;--$5.00 Budweiser, Bud Light and Miller Lite Pitchers')
 
 DailyDeal.create(
-	bar_id: 8,
+	bar_id: 15,
 	day_of_the_week: 'Friday',
-	deal: 'Happy Hour 4-9:;--$2 Wells;--$2 Miller Lite Bottles;--$2 Coors Light Bottles;--$2 Drafts;Daily Features:;--$2 Pinnicale Vodkas, Rums, Jim Beams;--$3 Miller Lite / Coors Light Pounders;--$3 Miller Lite / Coors Light Drafts')
+	deal: 'Happy Hour Until 9:;--$1 House Liqour;--$4.25 PBR and Natural Light Pitchers')
 
 DailyDeal.create(
-	bar_id: 8,
+	bar_id: 15,
 	day_of_the_week: 'Saturday',
-	deal: 'Daily Features:;--$3 Miller Lite / Coors Light Pounders;--$3 Miller Lite / Coors Light Drafts')
-	
+	deal: 'Happy Hour Until 9:;--$1 House Liqour;--$.99 Drafts;--$2.75 Guinness and Blue Moon Pints')
+
+#little
+DailyDeal.create(
+	bar_id: 9,
+	day_of_the_week: 'Sunday',
+	deal: 'Sunday Funday:;--$6 Miller Lite / Coors Light Pitchers;--$3 Miller Lite / Coors Light Pounders;--$3 Miller Lite / Coors Light Drafts')
+
+DailyDeal.create(
+	bar_id: 9,
+	day_of_the_week: 'Monday',
+	deal: 'Mishpa Monday:;--$2 Pinnicale Vodkas, Rums, Jim Beams;--$3 Miller Lite / Coors Light Pounders;--$3 Miller Lite / Coors Light Drafts')
+
+DailyDeal.create(
+	bar_id: 9,
+	day_of_the_week: 'Tuesday',
+	deal: 'Ladies Night:;--$2 Longs Islands, Long Beaches, Amaretto Sour, Sex on the Beach, Cosmos;--$1.50 Miller Lite / Coors Light Drafts')
+
+DailyDeal.create(
+	bar_id: 9,
+	day_of_the_week: 'Wednesday',
+	deal: 'Hump Day:;--$2 Wells;--$2 Miller Lite Bottles;--$2 Coors Light Bottles;--$2 Drafts;Daily Features:;--$3 Miller Lite / Coors Light Mugs;--$4 Craft and Import Mugs;--$1.50 Miller Lite / Coors Light Drafts;--$2.50 Craft and Import Drafts')
+
+DailyDeal.create(
+	bar_id: 9,
+	day_of_the_week: 'Thursday',
+	deal: 'Thirsty Tursday:;--$2 Wells;--$2 Miller Lite Bottles;--$2 Coors Light Bottles;--$2 Drafts;Ladies Night:;--$2 Longs Islands, Long Beaches, Amaretto Sour, Sex on the Beach, Cosmos;--$1.50 Miller Lite / Coors Light Drafts')
+
+DailyDeal.create(
+	bar_id: 9,
+	day_of_the_week: 'Friday',
+	deal: 'Flashback Friday:;--$2 Wells;--$2 Miller Lite Bottles;--$2 Coors Light Bottles;--$2 Drafts;Daily Features:;--$2 Pinnicale Vodkas, Rums, Jim Beams;--$3 Miller Lite / Coors Light Pounders;--$3 Miller Lite / Coors Light Drafts')
+
+DailyDeal.create(
+	bar_id: 9,
+	day_of_the_week: 'Saturday',
+	deal: 'Saturday:;--$3 Miller Lite / Coors Light Pounders;--$3 Miller Lite / Coors Light Drafts')
+
+#toos
+DailyDeal.create(
+	bar_id: 9,
+	day_of_the_week: 'Tuesday',
+	deal: 'Daily Deals:;--$1 Domestic Bottles')
+
+DailyDeal.create(
+	bar_id: 9,
+	day_of_the_week: 'Wednesday',
+	deal: 'Daily Deals:;--$2.50 32oz Drafts')
+
+DailyDeal.create(
+	bar_id: 9,
+	day_of_the_week: 'Thursday',
+	deal: 'Daily Deals:;--$3 40oz Bottles;--$2.50 Wells')
+
+DailyDeal.create(
+	bar_id: 9,
+	day_of_the_week: 'Friday',
+	deal: 'Daily Deals:;--$4 Pitchers;--$12 20 Wings and 5 Domestic Beers')
+
+DailyDeal.create(
+	bar_id: 9,
+	day_of_the_week: 'Saturday',
+	deal: 'Power Hour 7:00 - 9:00:;--$1 Almost Everything;--$2 Top Shelf')
 	
 User.delete_all
 User.create(

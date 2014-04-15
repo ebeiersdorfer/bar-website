@@ -5,5 +5,7 @@ class CalendarController < ApplicationController
   		@currentDay = Time.now
   		#if this site is ran with a daysAdv parameters, itll advance the current day that many days
   		@currentDay = @currentDay.advance(days: params[:daysAdv].to_i)
+  		
+  		@days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Sunday"]
   	end
 end

@@ -492,7 +492,7 @@ DailyDeal.create(
 DailyDeal.create(
 	bar_id: 9,
 	day_of_the_week: 'Friday',
-	deal: ('Flashback Friday:;--$2 Wells;--$2 Miller Lite Bottles;--$2 Coors Light Bottles;--$2 Drafts;Daily Features:;--$2 Pinnicale Vodkas, Rums, Jim Beams;--$3 Miller Lite / Coors Light Pounders;--$3 Miller Lite / Coors Light Drafts')
+	deal: 'Flashback Friday:;--$2 Wells;--$2 Miller Lite Bottles;--$2 Coors Light Bottles;--$2 Drafts;Daily Features:;--$2 Pinnicale Vodkas, Rums, Jim Beams;--$3 Miller Lite / Coors Light Pounders;--$3 Miller Lite / Coors Light Drafts')
 
 DailyDeal.create(
 	bar_id: 9,
@@ -501,27 +501,27 @@ DailyDeal.create(
 
 #toos
 DailyDeal.create(
-	bar_id: 9,
+	bar_id: 2,
 	day_of_the_week: 'Tuesday',
 	deal: 'Daily Deals:;--$1 Domestic Bottles')
 
 DailyDeal.create(
-	bar_id: 9,
+	bar_id: 2,
 	day_of_the_week: 'Wednesday',
 	deal: 'Daily Deals:;--$2.50 32oz Drafts')
 
 DailyDeal.create(
-	bar_id: 9,
+	bar_id: 2,
 	day_of_the_week: 'Thursday',
 	deal: 'Daily Deals:;--$3 40oz Bottles;--$2.50 Wells')
 
 DailyDeal.create(
-	bar_id: 9,
+	bar_id: 2,
 	day_of_the_week: 'Friday',
 	deal: 'Daily Deals:;--$4 Pitchers;--$12 20 Wings and 5 Domestic Beers')
 
 DailyDeal.create(
-	bar_id: 9,
+	bar_id: 2,
 	day_of_the_week: 'Saturday',
 	deal: 'Power Hour 7:00 - 9:00:;--$1 Almost Everything;--$2 Top Shelf')
 	

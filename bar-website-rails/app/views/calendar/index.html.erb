@@ -1,35 +1,38 @@
-<div class="special">
-	<h1>Calendar Page!</h1>
-
-	<p>Day is : <%= @currentDay.strftime("%A") %></p>
-
-	<!-- Creates links for the next 8 days-->
-	<%= link_to 'Today', calendar_index_path(daysAdv: 0) %> |
-	<%= link_to 'Tomorrow', calendar_index_path(daysAdv: 1) %> |
-	<!-- These days use the strftime to print the month/day of that current day-->
-	<!-- Uses link to with daysAdv parameter to reload page with new current day, Not ideal solution IMO-->
-	<%= link_to Time.now.advance(days: 2).strftime("%-m/%-d"), calendar_index_path(daysAdv: 2) %> |
-	<%= link_to Time.now.advance(days: 3).strftime("%-m/%-d"), calendar_index_path(daysAdv: 3) %> |
-	<%= link_to Time.now.advance(days: 4).strftime("%-m/%-d"), calendar_index_path(daysAdv: 4) %> |
-	<%= link_to Time.now.advance(days: 5).strftime("%-m/%-d"), calendar_index_path(daysAdv: 5) %> |
-	<%= link_to Time.now.advance(days: 6).strftime("%-m/%-d"), calendar_index_path(daysAdv: 6) %> |
-	<%= link_to Time.now.advance(days: 7).strftime("%-m/%-d"), calendar_index_path(daysAdv: 7) %>
-	<h3>Deals:</h3>
+<div class="barBox">
+	<h1>Daily Deals:</h1>
+	<ul class="nav nav-tabs" style="border:1px">
+		<li id="SundayTab" ><a href="#Sunday" data-toggle="tab">Sunday</a></li>
+  		<li id="MondayTab"><a href="#Monday" data-toggle="tab">Monday</a></li>
+  		<li id="TuesdayTab"><a href="#Tuesday" data-toggle="tab">Tuesday</a></li>
+  		<li id="WednesdayTab"><a href="#Wednesday" data-toggle="tab">Wednesday</a></li>
+  		<li id="ThursdayTab"><a href="#Thursday" data-toggle="tab">Thursday</a></li>
+  		<li id="FridayTab"><a href="#Friday" data-toggle="tab">Friday</a></li>
+  		<li id="SaturdayTab"><a href="#Saturday" data-toggle="tab">Saturday</a></li>
+	</ul>
+	<div class="tab-content">
+		<% @days.each do |day| %>
+			<div class="tab-pane" id="<%= day %>">
+				<% @bars.each do |bar| %>
+					<% bar.daily_deals.each do |deal| %>
+						<% if deal.day_of_the_week == day %>
+  							<div class="">
+    							<h3><%= link_to bar.name, bar %></h3>
+    							<p><%= (deal.deal.gsub ';', '<br>').html_safe %></p>
+  							</div>
+  						<% end %>
+  					<% end %>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
 </div>
-<% @bars.each do |bar| %>
-	<% bar.daily_deals.each do |deal| %>
-		<% if deal.day_of_the_week == @currentDay.strftime("%A") %>
-  			<div class="entry special">
-    			<h3><%= link_to bar.name, bar %></h3>
-    			<p><%= (deal.deal.gsub ';', '<br>').html_safe %></p>
-  			</div>
-  		<% end %>
-  	<% end %>
-<% end %>
-
 
 
 <script>
 var calMenu = document.getElementById("CalendarMenu");
 calMenu.className += " active";
+var currentTab = document.getElementById("<%= @currentDay.strftime("%A") %>Tab");
+currentTab.className += " active";
+var currentDay = document.getElementById("<%= @currentDay.strftime("%A") %>");
+currentDay.className += " active";
 </script>
