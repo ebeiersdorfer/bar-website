@@ -32,6 +32,7 @@
   								<div class="barBoxContent">
   									<h3><%= link_to bar.name, bar %></h3> 									
   									<hr>
+  									<span class="icon-calendar"></span>
   									<br>
     								<p><%= (bar.address.sub ',', '<br>').html_safe %></p>
     							</div>
