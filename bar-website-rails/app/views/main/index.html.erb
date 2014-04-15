@@ -140,6 +140,8 @@ barMenu.className += " active";
 	
 <script type="text/javascript">
 	
+	barsAreSet = false;
+	
 	function Bar(bar_id, name, bar_link, x_coordinate, y_coordinate, address)
         {
             this.name = name || ""; //the specific meeting number for that entry
@@ -179,7 +181,6 @@ barMenu.className += " active";
     	navigator.geolocation.getCurrentPosition( success, error,options);
     	} else { 
     		x.innerHTML= "Geolocation is not supported by this browser."; 
-    		addBarsToPage();
     	}
     }
 
@@ -187,7 +188,6 @@ barMenu.className += " active";
 	var lng = 0;
 	function error(e) {
 		console.log("error code:" + e.code + 'message: ' + e.message );
-		addBarsToPage();
 	}
 	function success(position) {
 		lat  = position.coords.latitude;
@@ -216,6 +216,7 @@ barMenu.className += " active";
 
 
 	function addBarsToPage() {
+		if(!barsAreSet) {
 			var barPage = document.getElementById("list");
 			console.log(barList.length);
             for (var index = 0; index < barList.length; index++) {
@@ -237,6 +238,14 @@ barMenu.className += " active";
 				barBox.appendChild(barBoxContent);
                 barPage.appendChild(barBox);
             }
+            barsAreSet = true;
+     	}
 	}
+	
+	setTimeout(function(){
+		if(!barsAreSet){
+			addBarsToPage();
+		}
+	},3000);
 	
 </script>
