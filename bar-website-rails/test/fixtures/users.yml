@@ -6,11 +6,11 @@
 #
 one:
   email: user1@mysite.com
-  encrypted_password: <%= User.new.send(:password_digest, "user123") %>
+  encrypted_password: <%= User.new.send(:password_digest, "user12345") %>
 # column: value
 #
 two: 
   email: user2@mysite.com
-  encrypted_password: <%= User.new.send(:password_digest, "user123") %>
+  encrypted_password: <%= User.new.send(:password_digest, "user12345") %>
 #  column: value
   
