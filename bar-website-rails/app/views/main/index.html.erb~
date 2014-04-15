@@ -86,7 +86,7 @@
 	</div>
 	<!-- This is the right box-->
 	<div class="span4">
-		<div class = "box">
+		<div class = "">
 			<!-- Nav tabs -->
 			<ul class="nav nav-tabs" style="background-color: #DDDDDD">
 				<li class="active"><a href="#dealTab" data-toggle="tab">Today's Deals</a></li>
@@ -95,19 +95,21 @@
 			<!-- This is the todays deals tab-->
 			<div class="tab-content">
 				<div class="tab-pane active" id="dealTab">
-					<h3>Todays deals:</h3>
+					<div class="barBox">
+					<h3 style="text-align:center; margin:0px;">Todays deals:</h3>
 					<!-- This code searches all bars in the array and traverses their deals and prints each deal that corresponds with current day of the week-->
 					<% @bars.each do |bar| %>
 						<% bar.daily_deals.each do |deal| %>
 							<% if deal.day_of_the_week == Time.now.strftime("%A") %>
   								<div class="barBoxContent">
-    								<h4 style="margin: 0px ; padding-top: 0px; padding-bottom: 0px;"><%= bar.name %></h4>
-    								<p><%= (deal.deal.gsub ';', '<br>').html_safe %></p>
-    								<hr style="margin: 0px; padding: 0px;">
+  									<hr style="margin: 0px; padding: 0px;">
+    								<h4 style="margin: 2px ; padding-top: 0px; padding-bottom: 0px;"><%= bar.name %></h4>
+    								<p style="margin:0px; padding-bottom:0px"><%= (deal.deal.gsub ';', '<br>').html_safe %></p>
   								</div>
   							<% end %>
   						<% end %>
 					<% end %>
+					</div>
 				</div>
 				<div class="tab-pane" id="twitterTab">
 					<!-- Fixes problem of twitter widget not loading after first page. -->

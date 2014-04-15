@@ -1,9 +1,9 @@
 BarWebsiteRails::Application.routes.draw do
-<<<<<<< HEAD
-  devise_for :users
-  get "users" => "main/index"
-=======
->>>>>>> b4a5dd6bb9ffff08db08234328fc9552486b1747
+  devise_for :users, :skip => [:registrations] 
+as :user do
+  get 'users/edit' => 'devise/registrations#edit', as: 'edit_user_registration'
+  put 'users' => 'devise/registrations#update', as: 'user_registration'
+end
   get "calendar/index"
   get "main/index"
   resources :daily_deals

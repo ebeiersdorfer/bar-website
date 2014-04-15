@@ -421,4 +421,8 @@ DailyDeal.create(
 	deal: 'Happy Hour 4-9:;--$16 62 oz Pitcher Flavor Margarita;--$6 Jumbo Lime Margarita;10pm-12pm: Nightly Deals')
 	
 	
-
+User.delete_all
+User.create(
+	email: 'admin@aol.com',
+	password: 'adminpassword',
+	password_confirmation: 'adminpassword')
