@@ -16,13 +16,13 @@
 		<div>
 			<!-- Nav tabs -->
 			<ul class="nav nav-tabs" style="background-color: #DDDDDD">
-				<li class="active"><a href="#list" data-toggle="tab">Bars</a></li>
-				<li><a href="#tiles" data-toggle="tab">Tiles</a></li>
+				<li class="active"><a href="#tiles" data-toggle="tab">Tiles</a></li>
+				<li><a href="#list" data-toggle="tab">Bars</a></li>
 				<li><a href="#map" data-toggle="tab">Map</a></li>
 			</ul>
 			<div class="tab-content">
 				<!-- This is the list tabl-->
-				<div class="tab-pane active" id="list">
+				<div class="tab-pane" id="list">
 					
 					<!-- This goes through the bar array (described and created in the controller and prints each Bar-->
 					<% if @bars.length > 0%>
@@ -35,7 +35,7 @@
   						</div>
 					<% end %>
 				</div>
-				<div class="tab-pane" id="tiles">
+				<div class="tab-pane active" id="tiles">
 					<% @bars.each do |bar| %>			
 						<div class = "barSquare">
 							<%= link_to image_tag(bar.small_pic_url, alt: bar.name + "image", class: "barImage"), bar %>

@@ -62,8 +62,8 @@ h3,hr {
 }
 
 .barImage{
-	width: 160px;
-	height: 160px;
+	width: 180px;
+	height: 180px;
 	top: -1px;
 	left: -1px
 	position: relative;
@@ -90,8 +90,8 @@ h3,hr {
 
 .barSquare {
 	
-    height: 160px;
-    width: 160px;
+    height: 180px;
+    width: 180px;
     border-style:solid;
     border-width: 1px;
 	border-color: #555555;
