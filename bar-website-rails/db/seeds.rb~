@@ -93,7 +93,7 @@ Bar.create(
 	name: 'Midway on High',
 	twitter_name: 'MidwayonHigh',
 	twitter_widget_id: '454999763973185536',
-	small_pic_url: 'midway.jpg',
+	small_pic_url: 'midway.JPG',
 	contact_number: '614-298-8816',
 	hours: 'Mon-Fri: 3:00pm-2:00am;Sat: 11:00am-2:00am;Sun: 3:00pm-2:00am',
 	address: '1728 N. High Street, Columbus, Ohio 43201',
@@ -139,7 +139,7 @@ Bar.create(
 	address: '20 E. Frambes Ave, Columbus, Ohio 43201',
   	description: %{Since the sixties, the Out R Inn is a landmark of the Ohio State University},
   	x_coordinate: 40.005161,    
-  	y_coordinate: 83.008484)
+  	y_coordinate: -83.008484)
   	
 Bar.create(
 	bar_id: 11,

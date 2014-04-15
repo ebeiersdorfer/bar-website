@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  bar_id: 100
+  bar_id: 1
   name: MyString
   twitter_name: MyString
   small_pic_url: MyString
@@ -14,7 +14,7 @@ one:
   y_coordinate: 9.99
 
 two:
-  bar_id: 200
+  bar_id: 2
   name: MyString
   twitter_name: MyString
   small_pic_url: MyString
