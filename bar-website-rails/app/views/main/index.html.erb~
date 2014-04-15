@@ -100,10 +100,10 @@
 					<% @bars.each do |bar| %>
 						<% bar.daily_deals.each do |deal| %>
 							<% if deal.day_of_the_week == Time.now.strftime("%A") %>
-  								<div class="entry">
-    								<h4><%= bar.name %></h4>
+  								<div class="barBoxContent">
+    								<h4 style="margin: 0px ; padding-top: 0px; padding-bottom: 0px;"><%= bar.name %></h4>
     								<p><%= (deal.deal.gsub ';', '<br>').html_safe %></p>
-    								<hr>
+    								<hr style="margin: 0px; padding: 0px;">
   								</div>
   							<% end %>
   						<% end %>
@@ -121,15 +121,6 @@
 		</div>		
 	</div>
 </div>
-
-<% if session[:mobile_override]%>
-	<p>Mobile? Yup</p>
-<% else %>
-  	<p>Mobile? Nope</p>
- <% end %>
-<!-- This is just test code used with the positioning code -->
-<button type="button" id="location">Get Latitude</button>
-<p id="cLoc"> 0 </p>
 
 
 <script>
@@ -163,6 +154,8 @@ barMenu.className += " active";
   			barList.push(new Bar(<%= bar.bar_id%>, '<%= escape_javascript bar.name%>', '<%= link_to bar.name, bar %>', <%= bar.x_coordinate%>, <%= bar.y_coordinate%> , '<%= escape_javascript (bar.address.sub ',', '<br>').html_safe %>'));
 		<% end %>
 	<% end %>
+
+
 	
 	// Handles displaying the map when the tab is clicked
 	// initialize every  time because otherwise fails to load after visiting other pages
