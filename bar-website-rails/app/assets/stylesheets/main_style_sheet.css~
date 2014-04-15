@@ -4,10 +4,7 @@ body {
 }
 
 .body-background{
-<<<<<<< HEAD
-	/*background-color:#EFEFEF;*/
-	background: url( 'background.jpg');
-=======
+
 	background-color:#EFEFEF;
 	
 	background: -moz-linear-gradient(top,  rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.05) 100%); /* FF3.6+ */
@@ -19,7 +16,7 @@ background: linear-gradient(to bottom,  rgba(0,0,0,0.30) 0%,rgba(0,0,0,0.05) 100
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 
 
->>>>>>> 8f5280b64025c8b0eb75f64f5f1d2dfffbedb4d0
+
 	background-repeat:no-repeat;
 	background-attachment:fixed;
 }
@@ -147,7 +144,7 @@ h3,hr {
 	background-color: #FFFFFF;
 	border:1px solid;
 	border-color: #DDDDDD;
-	/*border-radius:5px;*/
+	border-radius:5px;
 }
 
 .barBox {
@@ -155,6 +152,7 @@ h3,hr {
 	background-color: #FFFFFF;
 	border:1px solid;
 	border-color: #DDDDDD;
+	border-radius:3px;
 }
 
 .barBoxContent {
