@@ -1,5 +1,9 @@
 class DailyDealsController < ApplicationController
-  before_action :set_daily_deal, only: [:show, :edit, :update, :destroy]
+  #before_action :set_daily_deal, only: [:show]
+  #before_action :authenticate_user!, only: [:edit, :update, :destroy]
+before_action :authenticate_user!, :except => [:index, :show]
+
+
 
   # GET /daily_deals
   # GET /daily_deals.json
@@ -25,8 +29,6 @@ class DailyDealsController < ApplicationController
   # POST /daily_deals.json
   def create
     @daily_deal = DailyDeal.new(daily_deal_params)
-    bar = Bar.find(@daily_deal.bar_id)
-    @daily_deal.bar = bar
 
     respond_to do |format|
       if @daily_deal.save
