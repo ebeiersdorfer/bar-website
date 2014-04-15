@@ -103,7 +103,7 @@
 							<% if deal.day_of_the_week == Time.now.strftime("%A") %>
   								<div class="barBoxContent">
   									<hr style="margin: 0px; padding: 0px;">
-    								<h4 style="margin: 2px ; padding-top: 0px; padding-bottom: 0px;"><%= bar.name %></h4>
+    								<h4 style="margin: 4px ; padding-top: 0px; padding-bottom: 0px;"><%= bar.name %></h4>
     								<p style="margin:0px; padding-bottom:0px"><%= (deal.deal.gsub ';', '<br>').html_safe %></p>
   								</div>
   							<% end %>
@@ -142,18 +142,18 @@ barMenu.className += " active";
 	
 	function Bar(bar_id, name, bar_link, x_coordinate, y_coordinate, address)
         {
-            this.name = name; //the specific meeting number for that entry
+            this.name = name || ""; //the specific meeting number for that entry
             this.bar_id = bar_id; //takes a date object and stores as the date for the entry
             this.bar_link = bar_link; //stores the text for the topic of that date of the entry
-            this.x_coordinate = x_coordinate;
-            this.y_coordinate = y_coordinate;
-            this.address = address;
+            this.x_coordinate = x_coordinate || 0;
+            this.y_coordinate = y_coordinate || 0;
+            this.address = address || "";
         }
         
         var barList = [];
 	<% if @bars.length > 0%>
 		<% @bars.each do |bar| %>
-  			barList.push(new Bar(<%= bar.bar_id%>, '<%= escape_javascript bar.name%>', '<%= link_to bar.name, bar %>', <%= bar.x_coordinate%>, <%= bar.y_coordinate%> , '<%= escape_javascript (bar.address.sub ',', '<br>').html_safe %>'));
+  			barList.push(new Bar(<%= bar.bar_id%>, '<%= escape_javascript bar.name%>', '<%= link_to bar.name, bar %>', <%= bar.x_coordinate || 0%>, <%= bar.y_coordinate || 0%> , '<%= escape_javascript (bar.address.sub ',', '<br>').html_safe %>'));
 		<% end %>
 	<% end %>
 
