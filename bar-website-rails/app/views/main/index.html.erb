@@ -1,7 +1,6 @@
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3SN-tvewofza0qi6XqEMH2pyFX148Bm8&sensor=false"></script>
 
 <%= javascript_tag "var bar_names = #{@names};" %>
 <%= javascript_tag "var bar_lat = #{ @lats.to_json };" %>
@@ -50,7 +49,7 @@
 				<div class="tab-pane" id="tiles">
 					<% @bars.each do |bar| %>			
 						<div class = "barSquare">
-							<%= image_tag(bar.small_pic_url, alt: bar.name + "image", class: "barImage") %>
+							<%= link_to image_tag(bar.small_pic_url, alt: bar.name + "image", class: "barImage"), bar %>
 							<p class = "barText"> <%= link_to bar.name, bar, class: "link"%></p>
 						</div>
 					<% end %>	
@@ -71,16 +70,16 @@
 			
 							//Deals with fading on hovering
 							$(document).on('mouseenter', '.barSquare', function () {
-								$("> img", this).stop();
+								$("> a", this).stop();
 								$("> p", this).stop();
-								$("> img", this).fadeTo('fast', 0.5);
-								$("> img", this).addClass("imgHovered");
+								$("> a", this).fadeTo('fast', 0.5);
+								$("> a > img", this).addClass("imgHovered");
 								$("> p", this).fadeTo('slow', 1);
 							}).on('mouseleave', '.barSquare', function() { 
-								$("> img", this).stop();
+								$("> a", this).stop();
 								$("> p", this).stop();
-								$("> img", this).fadeTo('fast', 1); 
-								$("> img", this).removeClass("imgHovered");
+								$("> a", this).fadeTo('fast', 1); 
+								$("> a > img", this).removeClass("imgHovered");
 								$("> p", this).fadeTo('slow', 0);
 							});
 						});
@@ -121,7 +120,14 @@
   						<% end %>
 					<% end %>
 				</div>
-				<div class="tab-pane" id="twitterTab">...</div>
+				<div class="tab-pane" id="twitterTab">
+					<!-- Fixes problem of twitter widget not loading after first page. -->
+          <script>
+            twttr.widgets.load();
+          </script>
+          <a class="twitter-timeline" href="https://twitter.com/mikeWzoller/bars" data-widget-id="455750764799856640">Tweets from Columbus Bars</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				</div>
 			</div>
 		</div>		
 	</div>
