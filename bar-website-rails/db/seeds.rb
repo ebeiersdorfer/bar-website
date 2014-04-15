@@ -507,6 +507,7 @@ DailyDeal.create(
 	day_of_the_week: 'Sunday',
 	deal: '$5 32oz Reds and Blue Moon')
 
+#plaza
 DailyDeal.create(
 	bar_id: 11,
 	day_of_the_week: 'Monday',
