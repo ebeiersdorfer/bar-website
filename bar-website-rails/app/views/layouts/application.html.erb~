@@ -26,11 +26,23 @@
 			<div class="navbar-inner" style="border-bottom: 0px">
 				<div class="container" >
 					<ul class="nav navbar-nav">
+<<<<<<< HEAD
+						<!--<li id="BarMenu"><%= link_to 'Bars', main_path %></li>-->
+						<!--<li id="CalendarMenu"><%= link_to 'Deals', calendar_index_path %></li>-->
 						<li id="BarMenu"><%= link_to main_path do %>
              				<i class="icon-glass icon-white"></i>
              			<% end %></li>
-						<li id="CalendarMenu"><%= link_to 'Deals', calendar_index_path %></li>
+						<li id="CalendarMenu"><%= link_to calendar_index_path do %>
+             				<i class="icon-calendar icon-white"></i>
+             			<% end %></li>
 						<li id="LocateBars"><%= link_to 'Bars Locator Website', main_path %></li>
+=======
+<!-- add the glyphicons here? -->
+<li id="LocateBars"><h3><%= link_to 'Crawler', main_path %></h3></li>
+						<li id="BarMenu"><%= link_to 'Bars', main_path %></li>
+						<li id="CalendarMenu"><%= link_to 'Calendar', calendar_index_path %></li>
+						
+>>>>>>> 0949e242f651544f84c0cca6712ce587a399b41e
 					</ul>  
 
 					<!--<center><a class="brand" href="./index.html">Locate Bars</a></center>-->
@@ -39,11 +51,15 @@
 
 							<input type="text" class="search-query" placeholder="Bar Name" name="bar_search"> 
 						<% end %>
+<<<<<<< HEAD
 						<% if user_signed_in? %> 
                 				<li><%= link_to 'Edit Bars', bars_path, :class => 'navbar-link' %></li>
   								<li><%= link_to 'Edit Password', edit_user_registration_path, :class => 'navbar-link' %></li>
                 				<li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
         					</li>
+=======
+						<% if user_signed_in? %>
+>>>>>>> 0949e242f651544f84c0cca6712ce587a399b41e
 							<!--<li>Logged in as <strong><%= current_user.email %></strong>.</li>-->
   							
 						<% else %>
