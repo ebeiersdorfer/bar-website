@@ -2,7 +2,7 @@
 
 <div class="row">
 	<div class="span8">
-		<div class="row" style="background-color:#FFF; padding:25px 0px;margin-bottom:20px;">
+		<div class="row" style="background-color:#FFF; padding:25px 0px;">
 			<div class="span4">
 				<%= image_tag(@bar.small_pic_url, :alt => @bar.name + "image") %>
 			</div>
@@ -12,19 +12,21 @@
       	<%= content_tag(:p, @bar.contact_number) %>
 			</div>
 		</div>
+		<div class = "row" style="background-color:#FFF;">
 		<div class="span8 description">	
 
 	    <h4>
     	  <%= @bar.description %>
     	</h4>
-		</div>
+		</div></div>
 	  <!-- This just iterates through all the daily deals related to this bar and prints them-->
     <% @bar.daily_deals.each do |deal| %>
-      <div class="entry special">
+      <div class="barBox">
+      	<div class="barBoxContent"
 				<hr>
         <h2><%= deal.day_of_the_week %></h2>
         <h5><%= (deal.deal.gsub ';', '<br>').html_safe %></h5>
-      </div>
+      </div></div>
     <% end %>
 
 		<div class="options">

@@ -1,6 +1,5 @@
 <div class="barBox">
-	<h1>Daily Deals:</h1>
-	<ul class="nav nav-tabs" style="border:1px">
+	<ul class="nav nav-tabs" style="background-color: #DDDDDD">
 		<li id="SundayTab" ><a href="#Sunday" data-toggle="tab">Sunday</a></li>
   		<li id="MondayTab"><a href="#Monday" data-toggle="tab">Monday</a></li>
   		<li id="TuesdayTab"><a href="#Tuesday" data-toggle="tab">Tuesday</a></li>
@@ -14,11 +13,14 @@
 			<div class="tab-pane" id="<%= day %>">
 				<% @bars.each do |bar| %>
 					<% bar.daily_deals.each do |deal| %>
+						
 						<% if deal.day_of_the_week == day %>
+							<div class="barBox">
+						<div class="barBoxContent">
   							<div class="">
     							<h3><%= link_to bar.name, bar %></h3>
     							<p><%= (deal.deal.gsub ';', '<br>').html_safe %></p>
-  							</div>
+  							</div></div></div>
   						<% end %>
   					<% end %>
 				<% end %>

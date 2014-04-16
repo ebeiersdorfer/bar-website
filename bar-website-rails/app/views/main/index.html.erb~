@@ -17,7 +17,7 @@
 			<!-- Nav tabs -->
 			<ul class="nav nav-tabs" style="background-color: #DDDDDD">
 				<li class="active"><a href="#tiles" data-toggle="tab">Tiles</a></li>
-				<li><a href="#list" data-toggle="tab">Bars</a></li>
+				<li><a href="#list" data-toggle="tab">Nearby Bars</a></li>
 				<li><a href="#map" data-toggle="tab">Map</a></li>
 			</ul>
 			<div class="tab-content">
@@ -35,27 +35,27 @@
   						</div>
 					<% end %>
 				</div>
-				<div class="tab-pane"  class="active" id="tiles">
-					<% @bars.each do |bar| %>			
-						<div class = "barSquare">
-							<%= link_to image_tag(bar.small_pic_url, alt: bar.name + "image", class: "barImage"), bar %>
-							<p class = "barText"> <%= link_to bar.name, bar, class: "link"%></p>
-						</div>
-					<% end %>	
-
+				<div class="tab-pane active" id="tiles">
+					<% if @bars.length > 0%>
+						<% @bars.each do |bar| %>			
+							<div class = "barSquare">
+								<%= link_to image_tag(bar.small_pic_url, alt: bar.name + "image", class: "barImage"), bar %>
+								<p class = "barText"> <%= link_to bar.name, bar, class: "link"%></p>
+							</div>
+						<% end %>	
+					<!-- Runs if no bars are in the array (Should only occur when no matches for search) -->
+					<% else %>
+						<div class="entry">
+  							<h3>Sorry, there seems to be no match!</h3>
+    						<hr>
+  						</div>
+					<% end %>
+					
         			<script type="text/javascript">
 						//This script just adds effects to tiles
 						
-							//jquery that adds a little interaction once the page loads
+						//jquery that adds a little interaction once the page loads
 						$(document).ready(function() {
-							//This section is ment to add a little animation on page load.
-							/*			
-							$('.barSquare').animate(
-							{
-							opactiy: 1,
-							left: "-=10px"
-							}, 800);
-							*/
 			
 							//Deals with fading on hovering
 							$(document).on('mouseenter', '.barSquare', function () {
@@ -103,7 +103,8 @@
 							<% if deal.day_of_the_week == Time.now.strftime("%A") %>
   								<div class="barBoxContent">
   									<hr style="margin: 0px; padding: 0px;">
-    								<h4 style="margin: 4px ; padding-top: 0px; padding-bottom: 0px;"><%= bar.name %></h4>
+  									<i class="icon-search"></i>
+    								<h4 style="margin: 4px ; padding-top: 0px; padding-bottom: 0px;"><%= link_to bar.name, bar %></h4>
     								<p style="margin:0px; padding-bottom:0px"><%= (deal.deal.gsub ';', '<br>').html_safe %></p>
   								</div>
   							<% end %>
@@ -139,6 +140,17 @@ barMenu.className += " active";
 
 	
 <script type="text/javascript">
+	
+	var barPage = document.getElementById("list");
+	var barBox = document.createElement('div');				
+    var barBoxContent = document.createElement('div');
+	var barBoxText = document.createElement('h3');
+	barBoxText.innerHTML = "Location is not turned on or working!";
+	barBox.className = "barBox";
+	barBoxContent.className = "barBoxContent";
+    barBoxContent.appendChild(barBoxText);
+	barBox.appendChild(barBoxContent);
+    barPage.appendChild(barBox);
 	
 	barsAreSet = false;
 	
@@ -214,11 +226,13 @@ barMenu.className += " active";
 		}
 	}
 
-
+var barPage = document.getElementById("list");
 	function addBarsToPage() {
 		if(!barsAreSet) {
 			var barPage = document.getElementById("list");
-			console.log(barList.length);
+			while (barPage.hasChildNodes()) {
+    			barPage.removeChild(barPage.lastChild);
+			}
             for (var index = 0; index < barList.length; index++) {
                 var barBox = document.createElement('div');				
                 var barBoxContent = document.createElement('div');
@@ -241,11 +255,11 @@ barMenu.className += " active";
             barsAreSet = true;
      	}
 	}
-	
+	/*
 	setTimeout(function(){
 		if(!barsAreSet){
 			addBarsToPage();
 		}
-	},3000);
+	},2000); */
 	
 </script>
