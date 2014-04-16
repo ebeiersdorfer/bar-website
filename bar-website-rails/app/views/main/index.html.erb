@@ -103,7 +103,6 @@
 							<% if deal.day_of_the_week == Time.now.strftime("%A") %>
   								<div class="barBoxContent">
   									<hr style="margin: 0px; padding: 0px;">
-  									<i class="icon-search"></i>
     								<h4 style="margin: 4px ; padding-top: 0px; padding-bottom: 0px;"><%= link_to bar.name, bar %></h4>
     								<p style="margin:0px; padding-bottom:0px"><%= (deal.deal.gsub ';', '<br>').html_safe %></p>
   								</div>
