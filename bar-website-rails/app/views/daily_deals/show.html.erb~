@@ -15,3 +15,5 @@
   <%= @daily_deal.deal %>
 </p>
 
+<%= link_to 'Edit', edit_daily_deal_path(@daily_deal) %> |
+<%= link_to 'Back', daily_deals_path %>

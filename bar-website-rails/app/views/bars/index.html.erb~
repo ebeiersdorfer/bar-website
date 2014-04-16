@@ -43,10 +43,6 @@
   </table>
 </table>
 
-<script>
-//This just makes the Bar tab on the navbar to active
-var editMenu = document.getElementById("BarEditMenu");
-editMenu.className += " active";
-</script>
+
 
 <%= link_to 'New Bar', new_bar_path %>

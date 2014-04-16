@@ -23,9 +23,7 @@
 <% end %>
 
 <script>
-//This just makes the Edit password tab on the navbar to active
-var passMenu = document.getElementById("PasswordEditMenu");
-passMenu.className += " active";
-</script>
+
+<script>
 
 <%= link_to "Back", :back %>

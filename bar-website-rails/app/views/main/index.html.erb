@@ -12,7 +12,6 @@
 <div class="row">
 	<!--The Left large box-->
 	<div class="span8">
-		<!--Gives characteristics of the box outline-->
 		<div>
 			<!-- Nav tabs -->
 			<ul class="nav nav-tabs" style="background-color: #DDDDDD">
@@ -21,7 +20,7 @@
 				<li><a href="#map" data-toggle="tab">Map</a></li>
 			</ul>
 			<div class="tab-content">
-				<!-- This is the list tabl-->
+				<!-- This is the list tab, this displays all bars via approximatty, handled in the javascript-->
 				<div class="tab-pane" id="list">
 					
 					<!-- This goes through the bar array (described and created in the controller and prints each Bar-->
@@ -29,12 +28,15 @@
 						
 					<!-- Runs if no bars are in the array (Should only occur when no matches for search) -->
 					<% else %>
-						<div class="entry">
-  							<h3>Sorry, there seems to be no match!</h3>
-    						<hr>
+						<div class="barBox">
+							<div class="barBoxContent">
+  								<h3>Sorry, there seems to be no match!</h3>
+    							<hr>
+    						</div>
   						</div>
 					<% end %>
 				</div>
+				<!-- This code generates the tiles for the main page-->
 				<div class="tab-pane active" id="tiles">
 					<% if @bars.length > 0%>
 						<% @bars.each do |bar| %>			
@@ -45,9 +47,11 @@
 						<% end %>	
 					<!-- Runs if no bars are in the array (Should only occur when no matches for search) -->
 					<% else %>
-						<div class="entry">
-  							<h3>Sorry, there seems to be no match!</h3>
-    						<hr>
+						<div class="barBox">
+							<div class="barBoxContent">
+  								<h3>Sorry, there seems to be no match!</h3>
+    							<hr>
+    						</div>
   						</div>
 					<% end %>
 					
@@ -74,6 +78,7 @@
 						});
         			</script>
 				</div>
+				<!-- This tab deals with the map, most of the map code is located in the barmap.js file -->
 				<div class="tab-pane" id="map">
 					<div class="barBox">
 						<div class="barBoxContent">
@@ -113,11 +118,11 @@
 				</div>
 				<div class="tab-pane" id="twitterTab">
 					<!-- Fixes problem of twitter widget not loading after first page. -->
-          <script>
-            twttr.widgets.load();
-          </script>
-          <a class="twitter-timeline" href="https://twitter.com/mikeWzoller/bars" data-widget-id="455750764799856640">Tweets from Columbus Bars</a>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+         		<script>
+            		twttr.widgets.load();
+          		</script>
+          		<a class="twitter-timeline" href="https://twitter.com/mikeWzoller/bars" data-widget-id="455750764799856640">Tweets from Columbus Bars</a>
+          		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 				</div>
 			</div>
 		</div>		
@@ -132,14 +137,10 @@ barMenu.className += " active";
 </script>
 
 
-<!-- All code below deals with finding the current location-->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3SN-tvewofza0qi6XqEMH2pyFX148Bm8&sensor=false">
-	//This is using Michaels google API key
-    </script>
-
 	
 <script type="text/javascript">
-	
+	//This adds a box displaying that location is not turned on
+	//This is removed once location is found and is replaced with the correct data
 	var barPage = document.getElementById("list");
 	var barBox = document.createElement('div');				
     var barBoxContent = document.createElement('div');
@@ -151,19 +152,23 @@ barMenu.className += " active";
 	barBox.appendChild(barBoxContent);
     barPage.appendChild(barBox);
 	
+	//A check so Nearby Bars is not generated multiple times, even though shoulld not be possible
 	barsAreSet = false;
 	
+	//Establishes a bar class
 	function Bar(bar_id, name, bar_link, x_coordinate, y_coordinate, address)
         {
-            this.name = name || ""; //the specific meeting number for that entry
-            this.bar_id = bar_id; //takes a date object and stores as the date for the entry
-            this.bar_link = bar_link; //stores the text for the topic of that date of the entry
+            this.name = name || ""; 
+            this.bar_id = bar_id; 
+            this.bar_link = bar_link; 
             this.x_coordinate = x_coordinate || 0;
             this.y_coordinate = y_coordinate || 0;
             this.address = address || "";
         }
         
-        var barList = [];
+    //Generates a javascript array based on the ruby array of bars
+    //This allows the sorting of the bars based on location to be done client side
+  	var barList = [];
 	<% if @bars.length > 0%>
 		<% @bars.each do |bar| %>
   			barList.push(new Bar(<%= bar.bar_id%>, '<%= escape_javascript bar.name%>', '<%= link_to bar.name, bar %>', <%= bar.x_coordinate || 0%>, <%= bar.y_coordinate || 0%> , '<%= escape_javascript (bar.address.sub ',', '<br>').html_safe %>'));
@@ -179,6 +184,7 @@ barMenu.className += " active";
 
 	});
 
+	//Deals with grabing current location as part of the google maps api
 	function getLocation()
     {
     	if (navigator.geolocation)
@@ -186,38 +192,41 @@ barMenu.className += " active";
     		var options = {
 				timeout: 2000,
     		    maximumAge: 0
-			};
-		console.log("test2");
-		//Keeps failing to connect, works outside of this enviorment, may test when server works.
+			};	
+		
     	navigator.geolocation.getCurrentPosition( success, error,options);
     	} else { 
     		x.innerHTML= "Geolocation is not supported by this browser."; 
     	}
     }
 
+	//Establishes global variables to store to latitude and longitude
 	var lat = 0;
 	var lng = 0;
 	function error(e) {
 		console.log("error code:" + e.code + 'message: ' + e.message );
 	}
 	function success(position) {
+		//if sucessful at getting location, stores them in the global vairables
 		lat  = position.coords.latitude;
 	    lng =  position.coords.longitude;
 
+		//Sorts the local bars array
 		sortBars();
-		//--
 		
+		//Adds the bars to the page
 		addBarsToPage();
 		
 	}
 	
 	google.maps.event.addDomListener(window, 'load', getLocation() );
 	
-	
+	//comparator that uses the simple formula for finding the distance between two points
 	function barSort(a,b) {
 		return Math.sqrt(Math.pow((Math.abs(lat) - Math.abs(a.x_coordinate)),2)+Math.pow((Math.abs(lng) - Math.abs(a.y_coordinate)),2)) - Math.sqrt(Math.pow((Math.abs(lat) - Math.abs(b.x_coordinate)),2)+Math.pow((Math.abs(lng) - Math.abs(b.y_coordinate)),2));
 	}
 	
+	//Sorts bars using the above comparator
 	function sortBars() {
 		if (barList.length > 1)
 		{
@@ -225,13 +234,17 @@ barMenu.className += " active";
 		}
 	}
 
-var barPage = document.getElementById("list");
+	//Function that actually adds the bars in the client side array to the page, only called if location is sucessful
 	function addBarsToPage() {
+		//Checks to see if bars hav been added yet
 		if(!barsAreSet) {
 			var barPage = document.getElementById("list");
+			//This removes anything previous put in the div (usually just a warning that location is not working)
 			while (barPage.hasChildNodes()) {
     			barPage.removeChild(barPage.lastChild);
 			}
+			//Loops through adding each bar in the sorted array of bars
+			//Pretty self explanitory javascript. Creates all the elements and appends them to the tab
             for (var index = 0; index < barList.length; index++) {
                 var barBox = document.createElement('div');				
                 var barBoxContent = document.createElement('div');
@@ -254,11 +267,5 @@ var barPage = document.getElementById("list");
             barsAreSet = true;
      	}
 	}
-	/*
-	setTimeout(function(){
-		if(!barsAreSet){
-			addBarsToPage();
-		}
-	},2000); */
 	
 </script>

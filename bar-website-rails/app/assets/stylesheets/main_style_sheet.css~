@@ -3,37 +3,33 @@ body {
 	background-color:#EEEEEE;
 }
 
+/*Gives the over background the gradient effect*/
 .body-background{
 
 	background-color:#EFEFEF;
 	
 	background: -moz-linear-gradient(top,  rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.15) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.30)), color-stop(100%,rgba(0,0,0,0.15))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  rgba(0,0,0,0.30) 0%,rgba(0,0,0,0.15) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  rgba(0,0,0,0.30) 0%,rgba(0,0,0,0.15) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  rgba(0,0,0,0.30) 0%,rgba(0,0,0,0.15) 100%); /* IE10+ */
-background: linear-gradient(to bottom,  rgba(0,0,0,0.30) 0%,rgba(0,0,0,0.15) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
-
-
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.30)), color-stop(100%,rgba(0,0,0,0.15))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(0,0,0,0.30) 0%,rgba(0,0,0,0.15) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(0,0,0,0.30) 0%,rgba(0,0,0,0.15) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(0,0,0,0.30) 0%,rgba(0,0,0,0.15) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(0,0,0,0.30) 0%,rgba(0,0,0,0.15) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 
 	background-repeat:no-repeat;
 	background-attachment:fixed;
 }
 
+/*Attributes for the logo*/
 .logo{
 	font-family:Tahoma, Geneva, sans-serif;
-  /* First we need to help some browsers along for this to work.
-     Just because a vendor prefix is there, doesn't mean it will
-     work in a browser made by that vendor either, it's just for
-     future-proofing purposes I guess. */
-  -o-transition:.5s;
-  -ms-transition:.5s;
-  -moz-transition:.5s;
-  -webkit-transition:.5s;
-  /* ...and now for the proper property */
-  transition:.5s;
-  
+  	-o-transition:.5s;
+  	-ms-transition:.5s;
+  	-moz-transition:.5s;
+  	-webkit-transition:.5s;
+  	/* ...and now for the proper property */
+  	transition:.5s;
+  	padding-right: 2px;
 }
 
 
@@ -42,6 +38,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', e
   text-decoration: none;
 }	
 
+/*Removes link_to attrrbutes when applied*/
 .link:link { 
   color: #FFFFFF;
 }
@@ -63,8 +60,7 @@ h3,hr {
 
 
 
-/* These deal with tiles */
-
+/* The Text inside the tiles */
 .barText {
 	padding: 0px;
 	margin: 0px;
@@ -81,6 +77,7 @@ h3,hr {
 	opacity:0;
 }
 
+/*Image in the Tile*/
 .barImage{
 	width: 185px;
 	height: 185px;
@@ -99,6 +96,7 @@ h3,hr {
 	-o-transition-duration: 0.5s; /*Opera duration version*/
 }
 
+/*Tile zoom effect*/
 .imgHovered{
 	-webkit-transform:scale(1.1); /*Webkit: Scale up image to 1.2x original size*/
 	-moz-transform:scale(1.1); /*Mozilla scale version*/
@@ -108,16 +106,13 @@ h3,hr {
 	-moz-box-shadow:0px 0px 30px gray; /*Mozilla shadow version*/
 }
 
+/*The actual tiles attributes*/
 .barSquare {
-	
     height: 185px;
     width: 185px;
     border-style:solid;
     border-width: 1px;
 	border-color: #555555;
-    /*border-color: #293e6a;*/
-	/*border-radius:3px;*/
-    /*border-color: #293e6a;*/
     background-color: #000000;
     float: left;
     margin:5px;
@@ -127,31 +122,6 @@ h3,hr {
 	
 }
 
-.mainDiv{
-	width: 1160px;
-	margin-left:auto;
-	margin-right:auto;
-}
-
-.center{
-	margin-left:auto;
-	margin-right:auto;
-}
-
-.fixed {
-    width: 200px;  /* the fixed width required */
-    float: left;
-	margin: 8px;
-	display: inline-block;
-}
-
-
-.fixed-right {
-    width: 240px;  /* the fixed width required */
-	float: left;
-	margin: 8px;
-	display: inline-block;
-}
 
 /*
 .fixed + div {

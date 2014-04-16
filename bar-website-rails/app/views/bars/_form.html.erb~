@@ -62,7 +62,6 @@
 <% end %>
 
 <!-- Also adds all the deals that are current tied with this bar for quick editing-->
-<!-- Mostly copied from the generic form created for the daily deals -->
 <h3>Edit Current Deals</h3>
 <div id="dealsform">
 <%= @bar.daily_deals.each do |deal| %>
@@ -100,11 +99,9 @@
 </div>
 
 <script>
-	//Fixes strange glitch of content being spilled to the screen, just removes it
 	var dealsForm = document.getElementById("dealsform");
 	dealsForm.innerHTML = dealsForm.innerHTML.replace(/\[.*?\]/g, "");
 </script>
 
-<!-- Adds link to create a new daily deal -->
 <%= link_to 'New Daily deal?', new_daily_deal_path %>
 <br>
