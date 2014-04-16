@@ -1,6 +1,6 @@
 class DailyDealsController < ApplicationController
   before_action :set_daily_deal, only: [:show, :update, :destroy, :edit]
-  #before_action :authenticate_user!, only: [:edit, :update, :destroy]
+ # Devise must authenticate admin to edit or delete a daily deal, user can only index and show the daily deals
 before_action :authenticate_user!, :except => [:index, :show]
 
 

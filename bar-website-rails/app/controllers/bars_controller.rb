@@ -1,7 +1,7 @@
 
 class BarsController < ApplicationController
   before_action :set_bar, only: [:show, :update, :destroy, :edit]
- #before_action :authenticate_user!, only: [:edit, :update, :destroy]
+ # Devise must authenticate admin to edit or delete a bar, user can only index and show the bars
 before_action :authenticate_user!, :except => [:index, :show]
   # GET /bars
   # GET /bars.json
