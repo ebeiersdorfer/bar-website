@@ -1,4 +1,4 @@
-
+	<!-- Establishes the tabs, similar style to the main page-->
 	<ul class="nav nav-tabs" style="background-color: #DDDDDD">
 		<li id="SundayTab" ><a href="#Sunday" data-toggle="tab">Sunday</a></li>
   		<li id="MondayTab"><a href="#Monday" data-toggle="tab">Monday</a></li>
@@ -9,18 +9,20 @@
   		<li id="SaturdayTab"><a href="#Saturday" data-toggle="tab">Saturday</a></li>
 	</ul>
 	<div class="tab-content">
+		<!-- Generates the tabs based on the days array in the controller -->
 		<% @days.each do |day| %>
 			<div class="tab-pane" id="<%= day %>">
+				<!-- Goes through each bar in the controller and checks for the current day for deals -->
 				<% @bars.each do |bar| %>
 					<% bar.daily_deals.each do |deal| %>
-						
 						<% if deal.day_of_the_week == day %>
+							<!-- Creates content for each deal in the correct format -->
 							<div class="barBox">
-						<div class="barBoxContent">
-  							<div class="">
-    							<h3><%= link_to bar.name, bar %></h3>
-    							<p><%= (deal.deal.gsub ';', '<br>').html_safe %></p>
-  							</div></div></div>
+								<div class="barBoxContent">
+    								<h3><%= link_to bar.name, bar %></h3>
+    								<p><%= (deal.deal.gsub ';', '<br>').html_safe %></p>
+  								</div>
+  							</div>
   						<% end %>
   					<% end %>
 				<% end %>
@@ -31,8 +33,10 @@
 
 
 <script>
+//This makes the calendar active in the nav bar
 var calMenu = document.getElementById("CalendarMenu");
 calMenu.className += " active";
+//This makes the default tab to be the current day of the week
 var currentTab = document.getElementById("<%= @currentDay.strftime("%A") %>Tab");
 currentTab.className += " active";
 var currentDay = document.getElementById("<%= @currentDay.strftime("%A") %>");

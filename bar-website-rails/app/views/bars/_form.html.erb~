@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :bar_id %><br>
-    <%= f.number_field :bar_id %>
+    <%= f.number_field :bar_id, readonly: true%>
   </div>
   <div class="field">
     <%= f.label :name %><br>
@@ -60,6 +60,8 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<!-- Also adds all the deals that are current tied with this bar for quick editing-->
 <h3>Edit Current Deals</h3>
 <div id="dealsform">
 <%= @bar.daily_deals.each do |deal| %>
@@ -78,7 +80,7 @@
   		<% end %>
   		<div class="field">
     		<%= d.label :bar_id %><br>
-    		<%= d.number_field :bar_id %>
+    		<%= d.number_field :bar_id, readonly: true%>
   		</div>
   		<div class="field">
     		<%= d.label :day_of_the_week %><br>
@@ -100,8 +102,6 @@
 	var dealsForm = document.getElementById("dealsform");
 	dealsForm.innerHTML = dealsForm.innerHTML.replace(/\[.*?\]/g, "");
 </script>
-<br>
-<hr>
 
 <%= link_to 'New Daily deal?', new_daily_deal_path %>
 <br>

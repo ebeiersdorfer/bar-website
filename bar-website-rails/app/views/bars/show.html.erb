@@ -8,30 +8,31 @@
 			</div>
 			<div class="span4">
 				<%= content_tag(:h1, @bar.name) %>
-      	<%= content_tag(:p, @bar.address) %>
-      	<%= content_tag(:p, @bar.contact_number) %>
+      			<%= content_tag(:p, @bar.address) %>
+      			<%= content_tag(:p, @bar.contact_number) %>
 			</div>
 		</div>
 		<div class = "row" style="background-color:#FFF;">
-		<div class="span8 description">	
+			<div class="span8 description">	
 
-	    <h4>
-    	  <%= @bar.description %>
-    	</h4>
-		</div></div>
+	    		<h4>
+    	  			<%= @bar.description %>
+    			</h4>
+			</div>
+		</div>
 	  <!-- This just iterates through all the daily deals related to this bar and prints them-->
-    <% @bar.daily_deals.each do |deal| %>
-      <div class="barBox">
-      	<div class="barBoxContent"
-				<hr>
-        <h2><%= deal.day_of_the_week %></h2>
-        <h5><%= (deal.deal.gsub ';', '<br>').html_safe %></h5>
-      </div></div>
-    <% end %>
+    	<% @bar.daily_deals.each do |deal| %>
+      		<div class="barBox">
+      			<div class="barBoxContent"
+					<hr>
+        			<h2><%= deal.day_of_the_week %></h2>
+        			<h5><%= (deal.deal.gsub ';', '<br>').html_safe %></h5>
+      			</div>
+      		</div>
+    	<% end %>
 
 		<div class="options">
 			<hr>
-    	<%= link_to 'Edit', edit_bar_path(@bar) %> |
     	<%= link_to 'Back', main_path %>
 		</div>
   </div>

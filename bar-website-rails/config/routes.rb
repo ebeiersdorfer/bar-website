@@ -1,9 +1,11 @@
 BarWebsiteRails::Application.routes.draw do
+  #Restricts regular users for signing up a new account, ensuring one admin account
   devise_for :users, :skip => [:registrations] 
-as :user do
-  get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
-  put 'users' => 'devise/registrations#update', :as => 'user_registration'
-end
+	as :user do
+  		get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+  		put 'users' => 'devise/registrations#update', :as => 'user_registration'
+	end
+	
   get "calendar/index"
   get "main/index"
   resources :daily_deals

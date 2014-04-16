@@ -21,7 +21,7 @@
 		</div></div>
 	  <!-- This just iterates through all the daily deals related to this bar and prints them-->
     <% @bar.daily_deals.each do |deal| %>
-      <div class="barBox" style="padding:25px 0px;">
+      <div class="barBox">
       	<div class="barBoxContent"
 				<hr>
         <h2><%= deal.day_of_the_week %></h2>

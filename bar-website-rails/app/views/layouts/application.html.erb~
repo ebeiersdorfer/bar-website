@@ -9,7 +9,6 @@
 <!--Adds Favicon to the webpage -->
 <%= favicon_link_tag 'favicon.ico' %>
   <link rel="stylesheet" type="text/css" href="bootstrap.css">
-  <!-- add custom stylesheet -->
   <link rel="stylesheet" type="text/css" href="main_style_sheet.css">
 
 <!-- Adds Google Maps API to webpage -->
