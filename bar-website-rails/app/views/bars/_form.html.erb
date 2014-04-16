@@ -61,6 +61,7 @@
   </div>
 <% end %>
 <h3>Edit Current Deals</h3>
+<div id="dealsform">
 <%= @bar.daily_deals.each do |deal| %>
 	<%= form_for(deal) do |d| %>
 		
@@ -93,8 +94,12 @@
   		<hr>
 	<% end %>
 <% end %>
-<br>
-<hr>
+</div>
+
+<script>
+	var dealsForm = document.getElementById("dealsform");
+	dealsForm.innerHTML = dealsForm.innerHTML.replace(/\[.*?\]/g, "");
+</script>
 
 <%= link_to 'New Daily deal?', new_daily_deal_path %>
 <br>
