@@ -103,7 +103,6 @@
 							<% if deal.day_of_the_week == Time.now.strftime("%A") %>
   								<div class="barBoxContent">
   									<hr style="margin: 0px; padding: 0px;">
-  									<i class="icon-search"></i>
     								<h4 style="margin: 4px ; padding-top: 0px; padding-bottom: 0px;"><%= link_to bar.name, bar %></h4>
     								<p style="margin:0px; padding-bottom:0px"><%= (deal.deal.gsub ';', '<br>').html_safe %></p>
   								</div>
@@ -133,10 +132,7 @@ barMenu.className += " active";
 </script>
 
 
-<!-- All code below deals with finding the current location-->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3SN-tvewofza0qi6XqEMH2pyFX148Bm8&sensor=false">
-	//This is using Michaels google API key
-    </script>
+
 
 	
 <script type="text/javascript">

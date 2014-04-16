@@ -7,6 +7,7 @@ before_action :authenticate_user!, :except => [:index, :show]
   # GET /bars.json
   def index
     @bars = Bar.all
+    @deals = @bars.daily_deals
   end
 
 	def self.latitudes

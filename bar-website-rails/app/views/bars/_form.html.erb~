@@ -91,8 +91,8 @@
     		<%= d.submit %>
   		</div>
   		<hr>
-	<% end %>
-<% end %>
+	<% end %><div class="junk">
+<% end %></div>
 <br>
 <hr>
 

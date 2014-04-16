@@ -38,6 +38,7 @@ before_action :authenticate_user!, :except => [:index, :show]
 
     respond_to do |format|
       if @bar.save
+      	@deals = @bar.daily_deals
         format.html { redirect_to @bar, notice: 'Bar was successfully created.' }
         format.json { render action: 'show', status: :created, location: @bar }
       else

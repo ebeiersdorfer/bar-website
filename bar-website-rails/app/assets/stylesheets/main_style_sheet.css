@@ -21,6 +21,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', e
 	background-attachment:fixed;
 }
 
+.junk:last-child { 
+    opacity:0.0;
+}
+
 .logo{
 	font-family:Tahoma, Geneva, sans-serif;
   /* First we need to help some browsers along for this to work.
