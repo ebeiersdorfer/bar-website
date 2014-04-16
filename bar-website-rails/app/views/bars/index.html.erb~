@@ -1,5 +1,6 @@
 <h1 style="color:#111111;">Bars Listing</h1>
 
+<!-- altered the generated bar listting with a more visually pleasing astetic -->
 <table class="span12">
 	<table class="table table-hover"  style="background-color:#dddddd;">
   <thead>
